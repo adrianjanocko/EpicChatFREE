@@ -5,7 +5,7 @@
 
 EpicChat is Chat formatting plugin that has everything you need. If you found a bug or you have an idea, please, post it here on the GitHub in the Issues section. (https://github.com/AdoNikeOFFICE/EpicChat/issues)
 
-https://bstats.org/signatures/bukkit/EpicChatPlugin.svg
+[[https://bstats.org/signatures/bukkit/EpicChatPlugin.svg|alt=EpicChat plugin analytics]]
 
 ## License
 ```
