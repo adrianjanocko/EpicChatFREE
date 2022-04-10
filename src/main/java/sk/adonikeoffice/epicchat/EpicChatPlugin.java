@@ -50,6 +50,17 @@ public class EpicChatPlugin extends SimplePlugin {
 		return 2022; // 10.04.2022
 	}
 
+	/**
+	 * https://bstats.org/plugin/bukkit/EpicChatPlugin/14898
+	 * https://bstats.org/signatures/bukkit/EpicChatPlugin.svg
+	 *
+	 * @return Metrics ID
+	 */
+	@Override
+	public int getMetricsPluginId() {
+		return 14898;
+	}
+
 	@Override
 	public List<Class<? extends YamlStaticConfig>> getSettings() {
 		return Collections.singletonList(Settings.class);
