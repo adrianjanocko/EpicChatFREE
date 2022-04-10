@@ -1,0 +1,88 @@
+# !-----------------------------------------------------------------------------------------------!
+#
+#    1) To hide any message, set it to [].
+#    2) For UNICODE CHARACTERS (smileys, symbols, ..), save the file in UTF-8 encoding.
+#
+# !-----------------------------------------------------------------------------------------------!
+
+# -------------------------------------------------------------------------------------------------
+# This is the prefix before the messages.
+# -------------------------------------------------------------------------------------------------
+Prefix: "&4&lEpicChat &8// &7"
+
+Chat:
+  # -------------------------------------------------------------------------------------------------
+  # Do you want to enable the chat?
+  # -------------------------------------------------------------------------------------------------
+  Enabled: true
+
+  # -------------------------------------------------------------------------------------------------
+  # Do you want the permission to use the chat?
+  # -------------------------------------------------------------------------------------------------
+  Permission_Enabled: false
+  # -------------------------------------------------------------------------------------------------
+  # What's the permission to use the chat?
+  # -------------------------------------------------------------------------------------------------
+  Permission: "chat.permission"
+  # -------------------------------------------------------------------------------------------------
+  # What's the permission message, when player don't have permission?
+  # -------------------------------------------------------------------------------------------------
+  Permission_Message: "You don't have enough permission to use the chat."
+
+  # -------------------------------------------------------------------------------------------------
+  # What should a chat look like?
+  #
+  #  1) Color codes are supported with '&' and '§' symbols. Example: '&c{player_prefix}'.
+  #
+  #  2) Hex colors are supported with '#123456' format. Example: '#123456{player_prefix}'.
+  #     This only applies for the servers 1.16 and above.
+  #
+  #  3) PlaceholderAPI is supported. Instead of %% use {}. Example: '{player_name}'.
+  #     Placeholders: https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders
+  #
+  #  4) Built In Placeholders are:
+  #     - {player_name} | Name of the player.
+  #     - {message} | Message that player sent to the chat.
+  #     - {server_name} | Name of the server.
+  #     - {nms_version} | Version of the server.
+  #     - {timestamp} | Date and Time in format DD.MM.YYYY HH.MM.SS
+  #     - {timestamp_short} | Date and Time in format DD.MM.YYYY HH.MM.
+  #     - {world} | World that player is in.
+  #     - {health} | Health of the player.
+  #     - {location} | Location of the player.
+  #     - {x} | X coordinate of the player.
+  #     - {y} | Y coordinate of the player.
+  #     - {z} | Z coordinate of the player.
+  #     - {tab_name} | Name of the player in the tab.
+  #     - {display_name} | Display name of the player.
+  #     - {player_prefix} | You need to have plugin Vault and LuckPerms example for this feature.
+  #     - {player_suffix} | You need to have plugin Vault and LuckPerms example for this feature.
+  #     - {player_group} | You need to have plugin Vault and LuckPerms example for this feature.
+  #     - {player_primary_group} | You need to have plugin Vault and LuckPerms example for this feature.
+  #     - {ip_address} | Player IP Address.
+  #     - {player_vanished} | Is player vanished? True or false.
+  #     - {country_code} | The code of the player country.
+  #     - {country_name} | The country name of the player.
+  #     - {region_name} | The region name of the player.
+  #
+  # -------------------------------------------------------------------------------------------------
+  Format: "&a{timestamp_short} &f[&7{player_name}&f] &8>> &f{message}"
+
+Command:
+  Reload:
+    # -------------------------------------------------------------------------------------------------
+    # What's the permission to use the reload command?
+    # -------------------------------------------------------------------------------------------------
+    Permission: "chat.command.reload"
+    # -------------------------------------------------------------------------------------------------
+    # What's the permission message, when player don't have permission?
+    # -------------------------------------------------------------------------------------------------
+    Permission_Message: "You don't have enough permission to use this command."
+
+Message:
+  No_Console: "You need to use this command in-game."
+
+# -------------------------------------------------------------------------------------------------
+# DO NOT EDIT. Otherwise it will corrupt your plugin installation!
+# -------------------------------------------------------------------------------------------------
+Version: 1

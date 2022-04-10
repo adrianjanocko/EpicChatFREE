@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="minecraft" name="Minecraft">
+      <configuration>
+        <autoDetectTypes>
+          <platformType>SPIGOT</platformType>
+        </autoDetectTypes>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.github.kangarko:Foundation:6.0.0-DEV4b" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.20" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:31.0.1-jre" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.12.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.7.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.3" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.8" level="project" />
+    <orderEntry type="library" name="Maven: net.md-5:bungeecord-chat:1.16-R0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.30" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:AuthMe:5.6.0-SNAPSHOT-2509" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:CitizensAPI:2.0.28-b792" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:CMI-API:8.7.8.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:DiscordSRV:1.24.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:EssentialsX:2.19.1-SNAPSHOT-1324" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Factions:3.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:FactionsUUID:1.6.9.5-U0.6.4-b271" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:MassiveCore:3.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:mcMMO:2.1.202" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Multiverse-Core:4.3.2-SNAPSHOT-867" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:NuVotifier:2.7.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:PlaceholderAPI:2.10.10" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:ProtocolLib:4.8.0-SNAPSHOT-538" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Residence:5.0.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:SimpleClans:2.16.0-SNAPSHOT-214" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Towny:0.97.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:TownyChat:0.91" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Vault:1.7.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:WorldEdit:7.2.6" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:WorldGuard:7.0.5-SNAPSHOT-2109" level="project" />
+  </component>
+</module>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mineacademy.plugin:AuthMe:5.6.0-SNAPSHOT-2509">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/mineacademy/plugin/AuthMe/5.6.0-SNAPSHOT-2509/AuthMe-5.6.0-SNAPSHOT-2509.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/org/mineacademy/plugin/AuthMe/5.6.0-SNAPSHOT-2509/AuthMe-5.6.0-SNAPSHOT-2509-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/mineacademy/plugin/AuthMe/5.6.0-SNAPSHOT-2509/AuthMe-5.6.0-SNAPSHOT-2509-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
