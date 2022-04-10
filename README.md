@@ -7,6 +7,9 @@ EpicChat is Chat formatting plugin that has everything you need. If you found a 
 
 <img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg" alt="EpicChat Analytics" target="_blank"></img>
 
+## Config file
+<a src="https://github.com/AdoNikeOFFICE/EpicChat/blob/main/src/main/resources/settings.yml">Click here!</a>
+
 ## License
 ```
 MIT License
