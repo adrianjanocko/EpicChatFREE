@@ -1,14 +1,11 @@
-# 🛡️ EpicChat
+# 🛡️ EpicChat [1.7.10 - 1.18.2]
 > A chat formatting plugin that has many features, basically everything you need.
 
 --- Badges ---
 
-EpicChat is Chat formatting plugin that has everything you need. If you found a bug or you have an idea, please, post it here on the GitHub in the Issues section. (https://github.com/AdoNikeOFFICE/EpicChat/issues)
+EpicChat is Chat formatting plugin that has everything you need. It's compatible from 1.7.10 to the newest Minecraft version. If you found a bug or you have an idea, please, post it here on the GitHub in the Issues section. (https://github.com/AdoNikeOFFICE/EpicChat/issues)
 
 <img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg" alt="EpicChat Analytics" target="_blank"></img>
-
-## Config file
-<a href="https://github.com/AdoNikeOFFICE/EpicChat/blob/main/src/main/resources/settings.yml">Click here!</a>
 
 ## License
 ```
