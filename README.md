@@ -3,7 +3,7 @@
 
 --- Badges ---
 
-EpicModeration focuses on helping people manage the server. It prides itself on simplicity and functionality. It is actively developed, so there is no need to be afraid of any mistakes. We fix mistakes quickly, so you always get a fully functional plugin. If you found a mistake, let us know. In terms of ideas, every idea is welcome. What are you still waiting for? This plugin is a clear choice if you don't know what to use for management.
+EpicChat is Chat formatting plugin that has everything you need. If you found a bug or you have an idea, please, post it here on the GitHub in the Issues section. (https://github.com/AdoNikeOFFICE/EpicChat/issues)
 
 https://bstats.org/signatures/bukkit/EpicChatPlugin.svg
 
