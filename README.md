@@ -1,4 +1,4 @@
-# ✉ Epic Chat [1.7-1.18]
+# 💬 Epic Chat [1.7-1.18]
 > A chat formatting plugin that has many features, basically everything you need.
 
 --- Badges ---
