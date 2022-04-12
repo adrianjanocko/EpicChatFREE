@@ -16,6 +16,7 @@ public class ReloadCommand extends SimpleCommand {
 		super("epicchat|ec");
 
 		setPermission(null);
+		setAutoHandleHelp(false);
 	}
 
 	@Override
@@ -44,10 +45,10 @@ public class ReloadCommand extends SimpleCommand {
 
 				Messenger.success(player, "Plugin has been reloaded.");
 			} catch (final Throwable t) {
-				Common.error(t, "Contact the Author of the plugin. (DISCORD AdoNikeOFFICE#9999)");
+				Common.error(t, "Contact the Author of the plugin. (DISCORD AdoNikeOFFICE(hashtag)9999)");
 			}
 		} else
-			Messenger.success(player, Settings.Command.Reload.PERMISSION_MESSAGE);
+			Messenger.success(player, Settings.Message.PERMISSION_MESSAGE);
 
 	}
 

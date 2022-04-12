@@ -19,7 +19,7 @@ public class Settings extends SimpleSettings {
 		public static Boolean ENABLED;
 		public static Boolean PERMISSION_ENABLED;
 		public static String PERMISSION;
-		public static String PERMISSION_MESSAGE;
+		public static String PERMISSION_COLOR;
 
 		public static String FORMAT;
 
@@ -28,7 +28,7 @@ public class Settings extends SimpleSettings {
 			ENABLED = getBoolean("Enabled");
 			PERMISSION_ENABLED = getBoolean("Permission_Enabled");
 			PERMISSION = getString("Permission");
-			PERMISSION_MESSAGE = getString("Permission_Message");
+			PERMISSION_COLOR = getString("Permission_Color");
 
 			FORMAT = getString("Format");
 		}
@@ -40,12 +40,10 @@ public class Settings extends SimpleSettings {
 		public static class Reload {
 
 			public static String PERMISSION;
-			public static String PERMISSION_MESSAGE;
 
 			private static void init() {
 				pathPrefix("Command.Reload");
 				PERMISSION = getString("Permission");
-				PERMISSION_MESSAGE = getString("Permission_Message");
 			}
 
 		}
@@ -55,10 +53,12 @@ public class Settings extends SimpleSettings {
 	public static class Message {
 
 		public static String NO_CONSOLE;
+		public static String PERMISSION_MESSAGE;
 
 		private static void init() {
 			pathPrefix("Message");
 			NO_CONSOLE = getString("No_Console");
+			PERMISSION_MESSAGE = getString("Permission_Message");
 		}
 
 	}

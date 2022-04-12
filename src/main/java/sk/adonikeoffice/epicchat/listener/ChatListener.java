@@ -25,16 +25,18 @@ public class ChatListener implements Listener {
 			if (hasAccess)
 				chat(player, message);
 			else
-				Messenger.success(player, Settings.Chat.PERMISSION_MESSAGE);
+				Messenger.success(player, Settings.Message.PERMISSION_MESSAGE);
 		} else
 			chat(player, message);
 	}
 
 	public static void chat(final Player player, final String message) {
 		final String format = Variables.replace(Settings.Chat.FORMAT, player);
-		final String replacedFormat = Replacer.replaceArray(format, "message", message);
 
-		Common.broadcast(Common.colorize(replacedFormat));
+		final boolean hasColorPermission = player.hasPermission(Settings.Chat.PERMISSION_COLOR) || player.isOp();
+		final String replacedFormat = Replacer.replaceArray(format, "message", hasColorPermission ? message : Common.stripColors(message));
+
+		Common.broadcast(replacedFormat);
 	}
 
 }

@@ -20,14 +20,16 @@ Chat:
   # Do you want the permission to use the chat?
   # -------------------------------------------------------------------------------------------------
   Permission_Enabled: false
+
   # -------------------------------------------------------------------------------------------------
   # What's the permission to use the chat?
   # -------------------------------------------------------------------------------------------------
   Permission: "chat.permission"
+
   # -------------------------------------------------------------------------------------------------
-  # What's the permission message, when player don't have permission?
+  # What's the permission to use a colors in the chat?
   # -------------------------------------------------------------------------------------------------
-  Permission_Message: "You don't have enough permission to use the chat."
+  Permission_Color: "chat.permission.color"
 
   # -------------------------------------------------------------------------------------------------
   # What should a chat look like?
@@ -74,13 +76,17 @@ Command:
     # What's the permission to use the reload command?
     # -------------------------------------------------------------------------------------------------
     Permission: "chat.command.reload"
-    # -------------------------------------------------------------------------------------------------
-    # What's the permission message, when player don't have permission?
-    # -------------------------------------------------------------------------------------------------
-    Permission_Message: "You don't have enough permission to use this command."
 
 Message:
+  # -------------------------------------------------------------------------------------------------
+  # What's the message, when sender is console?
+  # -------------------------------------------------------------------------------------------------
   No_Console: "You need to use this command in-game."
+
+  # -------------------------------------------------------------------------------------------------
+  # What's the permission message, when player don't have specific permission?
+  # -------------------------------------------------------------------------------------------------
+  Permission_Message: "You don't have enough permission to use this."
 
 # -------------------------------------------------------------------------------------------------
 # DO NOT EDIT. Otherwise it will corrupt your plugin installation!
