@@ -44,7 +44,7 @@ Chat:
   #
   #  4) Built In Placeholders are:
   #     - {player_name} | Name of the player.
-  #     - {message} | Message that player sent to the chat.
+  #     - {message} | Message, that player sent to the chat.
   #     - {server_name} | Name of the server.
   #     - {nms_version} | Version of the server.
   #     - {timestamp} | Date and Time in format DD.MM.YYYY HH.MM.SS
@@ -64,8 +64,8 @@ Chat:
   #     - {ip_address} | Player IP Address.
   #     - {player_vanished} | Is player vanished? True or false.
   #     - {country_code} | The code of the player country.
-  #     - {country_name} | The country name of the player.
-  #     - {region_name} | The region name of the player.
+  #     - {country_name} | The country name of the player country.
+  #     - {region_name} | The region name of the player country.
   #
   # -------------------------------------------------------------------------------------------------
   Format: "&a{timestamp_short} &f[&7{player_name}&f] &8>> &f{message}"
