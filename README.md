@@ -4,7 +4,6 @@
 Epic Chat is open-source Chat formatting plugin, that has everything you need for your server. It's compatible from Minecraft 1.7 to the newest one. If you found a bug or you have an idea, please, post it here on the GitHub in the Issues section. (https://github.com/AdoNikeOFFICE/EpicChat/issues)
 
 <img src="https://i.imgur.com/zI6LL6T.png" alt="EpicChat Banner" target="_blank" width="500px"></img>
-![bStats](https://bstats.org/signatures/bukkit/EpicChatPlugin.svg)
 
 ## License
 ```
