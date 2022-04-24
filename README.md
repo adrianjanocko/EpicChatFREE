@@ -5,7 +5,7 @@ Epic Chat is open-source Chat formatting plugin, that has everything you need fo
 
 <img src="https://i.imgur.com/zI6LL6T.png" alt="EpicChat Banner" target="_blank" width="500px"></img>
 
-(https://www.mc-market.org/resources/23475/)[You can download it here]
+You can download it here (https://www.mc-market.org/resources/23475/)
 
 ## License
 ```
