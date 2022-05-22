@@ -1,6 +1,9 @@
 package sk.adonikeoffice.epicchat.settings;
 
+import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.settings.SimpleSettings;
+
+import java.util.List;
 
 public class Settings extends SimpleSettings {
 
@@ -9,10 +12,7 @@ public class Settings extends SimpleSettings {
 		return 1;
 	}
 
-	public static String PREFIX;
-
 	private static void init() {
-		PREFIX = getString("Prefix");
 	}
 
 	public static class Chat {
@@ -31,6 +31,32 @@ public class Settings extends SimpleSettings {
 			PERMISSION_COLOR = getString("Permission_Color");
 
 			FORMAT = getString("Format");
+		}
+
+		public static class Mention {
+
+			public static Boolean ENABLED;
+			public static CompChatColor COLOR;
+
+			private static void init() {
+				pathPrefix("Chat.Mention");
+				ENABLED = getBoolean("Enabled");
+				COLOR = get("Color", CompChatColor.class);
+			}
+
+		}
+
+		public static class AntiSwear {
+
+			public static Boolean ENABLED;
+			public static List<String> WORDS;
+
+			private static void init() {
+				pathPrefix("Chat.Anti_Swear");
+				ENABLED = getBoolean("Enabled");
+				WORDS = getStringList("Words");
+			}
+
 		}
 
 	}
@@ -54,11 +80,15 @@ public class Settings extends SimpleSettings {
 
 		public static String NO_CONSOLE;
 		public static String PERMISSION_MESSAGE;
+		public static String MENTION;
+		public static String INVALID_ARGS;
 
 		private static void init() {
 			pathPrefix("Message");
 			NO_CONSOLE = getString("No_Console");
-			PERMISSION_MESSAGE = getString("Permission_Message");
+			PERMISSION_MESSAGE = getString("Permission");
+			MENTION = getString("Mention");
+			INVALID_ARGS = getString("Invalid_Args");
 		}
 
 	}

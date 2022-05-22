@@ -19,9 +19,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.github.kangarko:Foundation:6.0.0-DEV4b" level="project" />
-    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.20" level="project" />
-    <orderEntry type="library" name="Maven: org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.github.kangarko:Foundation:5.13.1" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.22" level="project" />
+    <orderEntry type="library" name="Maven: org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:31.0.1-jre" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
@@ -30,28 +30,32 @@
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.12.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.3" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.8" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.9" level="project" />
     <orderEntry type="library" name="Maven: net.md-5:bungeecord-chat:1.16-R0.4" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.30" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:AuthMe:5.6.0-SNAPSHOT-2509" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:CitizensAPI:2.0.28-b792" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:CMI-API:8.7.8.2" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:DiscordSRV:1.24.1" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:EssentialsX:2.19.1-SNAPSHOT-1324" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:AuthMe:5.6.0-SNAPSHOT-2530" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:CitizensAPI:2.0.29-b839" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:CMI-API:9.0.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:DiscordSRV:1.26.0-SNAPSHOT-0824719" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:EssentialsX:2.20.0-SNAPSHOT-1375" level="project" />
     <orderEntry type="library" name="Maven: org.mineacademy.plugin:Factions:3.3.3" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:FactionsUUID:1.6.9.5-U0.6.4-b271" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:FactionsUUID:1.6.9.5-U0.6.11-b287" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Jobs:5.0.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:LandsAPI:6.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:LWC:2.2.8-SNAPSHOT-171" level="project" />
     <orderEntry type="library" name="Maven: org.mineacademy.plugin:MassiveCore:3.3.3" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:mcMMO:2.1.202" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Multiverse-Core:4.3.2-SNAPSHOT-867" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:mcMMO:2.1.213" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Multiverse-Core:4.3.2-SNAPSHOT-870" level="project" />
     <orderEntry type="library" name="Maven: org.mineacademy.plugin:NuVotifier:2.7.3" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:PlaceholderAPI:2.10.10" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:ProtocolLib:4.8.0-SNAPSHOT-538" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Residence:5.0.0.4" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:SimpleClans:2.16.0-SNAPSHOT-214" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Towny:0.97.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:TownyChat:0.91" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:PlaceholderAPI:2.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:ProtocolLib:5.0.0-SNAPSHOT-554" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Residence:5.0.1.6" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:SimpleClans:2.16.2-SNAPSHOT-283" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:StackMob:5.7.5" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:Towny:0.98.1.12" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:TownyChat:0.96" level="project" />
     <orderEntry type="library" name="Maven: org.mineacademy.plugin:Vault:1.7.3" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:WorldEdit:7.2.6" level="project" />
-    <orderEntry type="library" name="Maven: org.mineacademy.plugin:WorldGuard:7.0.5-SNAPSHOT-2109" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:WorldEdit:7.2.10" level="project" />
+    <orderEntry type="library" name="Maven: org.mineacademy.plugin:WorldGuard:7.0.7" level="project" />
   </component>
 </module>

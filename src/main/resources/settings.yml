@@ -70,6 +70,16 @@ Chat:
   # -------------------------------------------------------------------------------------------------
   Format: "&a{timestamp_short} &f[&7{player_name}&f] &8>> &f{message}"
 
+  Mention:
+    Enabled: true
+    Color: "GREEN"
+
+  Anti_Swear:
+    Enabled: true
+    Words:
+      - "cs"
+      - "kekw"
+
 Command:
   Reload:
     # -------------------------------------------------------------------------------------------------
@@ -86,7 +96,17 @@ Message:
   # -------------------------------------------------------------------------------------------------
   # What's the permission message, when player don't have specific permission?
   # -------------------------------------------------------------------------------------------------
-  Permission_Message: "You don't have enough permission to use this."
+  Permission: "You don't have enough permission to use this."
+
+  # -------------------------------------------------------------------------------------------------
+  # What's the message, when player will be mentioned in the chat?
+  # -------------------------------------------------------------------------------------------------
+  Mention: "You were mentioned."
+
+  # -------------------------------------------------------------------------------------------------
+  # What's the message, when plugin sub-command doesn't exist?
+  # -------------------------------------------------------------------------------------------------
+  Invalid_Args: "Invalid arguments. Try &f/ec &7for help."
 
 # -------------------------------------------------------------------------------------------------
 # DO NOT EDIT. Otherwise it will corrupt your plugin installation!

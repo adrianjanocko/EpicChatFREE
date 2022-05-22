@@ -39,14 +39,17 @@ public class ReloadCommand extends SimpleCommand {
 
 		final String param = args[0];
 
-		if (hasAccess && "reload".equals(param)) {
-			try {
-				SimplePlugin.getInstance().reload();
+		if (hasAccess) {
+			if ("reload".equalsIgnoreCase(param)) {
+				try {
+					SimplePlugin.getInstance().reload();
 
-				Messenger.success(player, "Plugin has been reloaded.");
-			} catch (final Throwable t) {
-				Common.error(t, "Contact the Author of the plugin. (DISCORD AdoNikeOFFICE(hashtag)9999)");
-			}
+					Messenger.success(player, "Plugin has been reloaded.");
+				} catch (final Throwable t) {
+					Common.error(t, "Contact the Author of the plugin. (DISCORD AdoNikeOFFICE(hashtag)9999)");
+				}
+			} else
+				Messenger.success(player, Settings.Message.INVALID_ARGS);
 		} else
 			Messenger.success(player, Settings.Message.PERMISSION_MESSAGE);
 

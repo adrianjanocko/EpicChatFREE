@@ -2,7 +2,9 @@ sk\adonikeoffice\epicchat\command\ReloadCommand.class
 sk\adonikeoffice\epicchat\settings\Settings$Message.class
 sk\adonikeoffice\epicchat\settings\Settings$Chat.class
 sk\adonikeoffice\epicchat\settings\Settings$Command.class
+sk\adonikeoffice\epicchat\settings\Settings$Chat$Mention.class
 sk\adonikeoffice\epicchat\settings\Settings$Command$Reload.class
 sk\adonikeoffice\epicchat\listener\ChatListener.class
 sk\adonikeoffice\epicchat\EpicChatPlugin.class
 sk\adonikeoffice\epicchat\settings\Settings.class
+sk\adonikeoffice\epicchat\settings\Settings$Chat$AntiSwear.class

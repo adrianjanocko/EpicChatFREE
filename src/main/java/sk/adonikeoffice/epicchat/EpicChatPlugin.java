@@ -2,6 +2,8 @@ package sk.adonikeoffice.epicchat;
 
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
+import org.mineacademy.fo.Valid;
+import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.settings.YamlStaticConfig;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
@@ -22,10 +24,13 @@ public class EpicChatPlugin extends SimplePlugin {
 		Common.log(
 				Common.consoleLineSmooth(),
 				SimplePlugin.getNamed() + " " + SimplePlugin.getVersion() + " by " + getAuthor(),
-				"",
+				" ",
 				"If you found a bug or you have an idea, please,",
 				"post it on the GitHub in the Issues section:",
 				"https://github.com/AdoNikeOFFICE/EpicChat/issues",
+				" ",
+				"Or, you can join our Discord:",
+				"discord.epic-central.eu",
 				Common.consoleLineSmooth()
 		);
 
@@ -33,7 +38,9 @@ public class EpicChatPlugin extends SimplePlugin {
 
 	@Override
 	protected void onReloadablesStart() {
-		Messenger.setSuccessPrefix(Settings.PREFIX);
+		Valid.checkBoolean(HookManager.isPlaceholderAPILoaded(), "You need to install the PlaceholderAPI plugin, if you want to use placeholders in the chat.");
+
+		Messenger.setSuccessPrefix(Settings.PLUGIN_PREFIX);
 
 		registerCommand(new ReloadCommand());
 

@@ -2,7 +2,7 @@ name: ${project.name}
 version: ${project.version}
 main: ${main.class}
 author: ${author}
-description: A chat formatting plugin that has many features, basically everything you need.
+description: A chat formatting plugin that has many features, basically everything you will ever need.
 # DO NOT EDIT. This api-version is used for maximum backward compatibility.
 api-version: 1.13
 # DO NOT EDIT. This will enable Nashorn library on servers using Java 15 or greater.
