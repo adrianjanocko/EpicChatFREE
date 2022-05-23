@@ -40,6 +40,7 @@ public class EpicChatPlugin extends SimplePlugin {
 	protected void onReloadablesStart() {
 		Valid.checkBoolean(HookManager.isPlaceholderAPILoaded(), "You need to install the PlaceholderAPI plugin, if you want to use placeholders in the chat.");
 
+		Common.setLogPrefix("EpicChat |");
 		Messenger.setSuccessPrefix(Settings.PLUGIN_PREFIX);
 
 		registerCommand(new ReloadCommand());

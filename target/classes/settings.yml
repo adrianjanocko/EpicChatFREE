@@ -42,7 +42,7 @@ Chat:
   #  3) PlaceholderAPI is supported. Instead of %% use {}. Example: '{player_name}'.
   #     Placeholders: https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders
   #
-  #  4) Built In Placeholders are:
+  #  4) Built In Placeholders:
   #     - {player_name} | Name of the player.
   #     - {message} | Message, that player sent to the chat.
   #     - {server_name} | Name of the server.
@@ -57,28 +57,26 @@ Chat:
   #     - {z} | Z coordinate of the player.
   #     - {tab_name} | Name of the player in the tab.
   #     - {display_name} | Display name of the player.
-  #     - {player_prefix} | You need to have plugin Vault and LuckPerms example for this feature.
-  #     - {player_suffix} | You need to have plugin Vault and LuckPerms example for this feature.
-  #     - {player_group} | You need to have plugin Vault and LuckPerms example for this feature.
-  #     - {player_primary_group} | You need to have plugin Vault and LuckPerms example for this feature.
   #     - {ip_address} | Player IP Address.
-  #     - {player_vanished} | Is player vanished? True or false.
   #     - {country_code} | The code of the player country.
   #     - {country_name} | The country name of the player country.
   #     - {region_name} | The region name of the player country.
   #
   # -------------------------------------------------------------------------------------------------
-  Format: "&a{timestamp_short} &f[&7{player_name}&f] &8>> &f{message}"
+  Format: "&f[&aK &7{statistic_player_kills} &cD &7%statistic_deaths%&f] {vault_prefix} &8| &f{player_name} &8>> {message}"
+  Message_Color: WHITE
 
   Mention:
     Enabled: true
+    Message: "You were mentioned by &f{0}&7."
     Color: "GREEN"
+    Sound: LEVEL_UP
 
-  Anti_Swear:
+  Cooldown:
     Enabled: true
-    Words:
-      - "cs"
-      - "kekw"
+    Permission: "chat.cooldown.bypass"
+    Message: "You can write again in {time}."
+    Delay: 3
 
 Command:
   Reload:
@@ -99,11 +97,6 @@ Message:
   Permission: "You don't have enough permission to use this."
 
   # -------------------------------------------------------------------------------------------------
-  # What's the message, when player will be mentioned in the chat?
-  # -------------------------------------------------------------------------------------------------
-  Mention: "You were mentioned."
-
-  # -------------------------------------------------------------------------------------------------
   # What's the message, when plugin sub-command doesn't exist?
   # -------------------------------------------------------------------------------------------------
   Invalid_Args: "Invalid arguments. Try &f/ec &7for help."
@@ -111,4 +104,4 @@ Message:
 # -------------------------------------------------------------------------------------------------
 # DO NOT EDIT. Otherwise it will corrupt your plugin installation!
 # -------------------------------------------------------------------------------------------------
-Version: 1
+Version: 2

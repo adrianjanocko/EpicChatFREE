@@ -7,6 +7,7 @@ import org.mineacademy.fo.command.SimpleCommand;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import sk.adonikeoffice.epicchat.EpicChatPlugin;
 import sk.adonikeoffice.epicchat.settings.Settings;
+import sk.adonikeoffice.epicchat.util.Chat;
 
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class ReloadCommand extends SimpleCommand {
 
 	@Override
 	protected List<String> tabComplete() {
-		if (args.length == 1)
+		if (Chat.hasPermission(getPlayer(), Settings.Command.Reload.PERMISSION) && args.length == 1)
 			return completeLastWord("reload");
 
 		return NO_COMPLETE;
