@@ -1,4 +1,4 @@
-<img src="https://www.mc-market.org/attachments/517325/">
+![image](https://user-images.githubusercontent.com/65062119/177041134-8cb1da45-e940-4aea-8b75-a7383877754f.png)
 
 If you found a bug or you have an idea, please, post it here on the
 GitHub in the Issues section. `https://github.com/AdoNikeOFFICE/EpicChat/issues`
