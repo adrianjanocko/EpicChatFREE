@@ -6,11 +6,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
+import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.model.Replacer;
+import org.mineacademy.fo.model.SimpleComponent;
 import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.util.Chat;
+
+import java.util.List;
 
 public class ChatListener implements Listener {
 
@@ -35,8 +39,13 @@ public class ChatListener implements Listener {
 				if ((now - lastMessageTime) < messageDelay) {
 					final long time = messageDelay - (now - lastMessageTime);
 
-					Messenger.success(player, Settings.Chat.Cooldown.MESSAGE
-							.replace("{time}", Common.plural(time, "second")));
+					final String replacedMessage = Replacer.replaceArray(
+							Settings.Chat.Cooldown.MESSAGE,
+							"time", time,
+							"time_plural", Common.plural(time, "second")
+					);
+
+					Chat.sendType(player, replacedMessage);
 					return;
 				}
 
@@ -55,7 +64,7 @@ public class ChatListener implements Listener {
 
 					message = message.replace(targetName, Settings.Chat.Mention.COLOR + "@" + targetName + (lastColor != null ? lastColor : Settings.Chat.MESSAGE_COLOR));
 
-					Remain.sendActionBar(target, Settings.PLUGIN_PREFIX + Settings.Chat.Mention.MESSAGE.replace("{0}", player.getName()));
+					Chat.sendType(player, Settings.PLUGIN_PREFIX + Settings.Chat.Mention.MESSAGE.replace("{0}", player.getName()));
 					Settings.Chat.Mention.SOUND.play(target);
 				}
 			}
@@ -96,7 +105,26 @@ public class ChatListener implements Listener {
 		final boolean hasColorPermission = Chat.hasPermission(player, Settings.Chat.PERMISSION_COLOR);
 		final String replacedFormat = Replacer.replaceArray(format, "message", hasColorPermission ? Settings.Chat.MESSAGE_COLOR + message : Settings.Chat.MESSAGE_COLOR + Common.stripColors(message));
 
-		Common.broadcast(replacedFormat);
+		sendMessage(player, replacedFormat);
+	}
+
+	private void sendMessage(final Player player, final String message) {
+		final SimpleComponent chat = SimpleComponent.of(message);
+
+		final List<String> hoverMessages = Settings.Chat.HOVER;
+		hoverMessages.replaceAll(string -> HookManager.replacePlaceholders(player, string));
+
+		/*Variables.replace(hoverMessages,player);
+
+		if (!hoverMessages.isEmpty())
+			for (final String hoverMessage : hoverMessages)
+				chat = SimpleComponent.of(message).onHover(HookManager.replacePlaceholders(player, hoverMessage));*/
+
+		for (final Player online : Remain.getOnlinePlayers())
+			chat.send(online);
+
+		if (Settings.Chat.LOG_ENABLED)
+			Common.log(message);
 	}
 
 }

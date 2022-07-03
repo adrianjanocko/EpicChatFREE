@@ -4,6 +4,8 @@ import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.CompSound;
 import org.mineacademy.fo.settings.SimpleSettings;
 
+import java.util.List;
+
 public class Settings extends SimpleSettings {
 
 	@Override
@@ -19,19 +21,23 @@ public class Settings extends SimpleSettings {
 		public static Boolean PERMISSION_ENABLED;
 		public static String PERMISSION;
 		public static String PERMISSION_COLOR;
+		public static Boolean LOG_ENABLED;
 
 		public static String FORMAT;
 		public static CompChatColor MESSAGE_COLOR;
+		public static List<String> HOVER;
 
 		private static void init() {
-			pathPrefix("Chat");
+			setPathPrefix("Chat");
 			ENABLED = getBoolean("Enabled");
 			PERMISSION_ENABLED = getBoolean("Permission_Enabled");
 			PERMISSION = getString("Permission");
 			PERMISSION_COLOR = getString("Permission_Color");
+			LOG_ENABLED = getBoolean("Log_Enabled");
 
 			FORMAT = getString("Format");
 			MESSAGE_COLOR = get("Message_Color", CompChatColor.class);
+			HOVER = getStringList("Hover");
 		}
 
 		public static class Mention {
@@ -42,7 +48,7 @@ public class Settings extends SimpleSettings {
 			public static CompSound SOUND;
 
 			private static void init() {
-				pathPrefix("Chat.Mention");
+				setPathPrefix("Chat.Mention");
 				ENABLED = getBoolean("Enabled");
 				MESSAGE = getString("Message");
 				COLOR = get("Color", CompChatColor.class);
@@ -76,11 +82,11 @@ public class Settings extends SimpleSettings {
 			public static Integer DELAY;
 
 			private static void init() {
-				pathPrefix("Chat.Cooldown");
+				setPathPrefix("Chat.Cooldown");
 				ENABLED = getBoolean("Enabled");
 				PERMISSION = getString("Permission");
 				MESSAGE = getString("Message");
-				DELAY = getInteger("Delay");
+				DELAY = getInteger("Delay_Seconds");
 			}
 
 		}
@@ -94,7 +100,7 @@ public class Settings extends SimpleSettings {
 			public static String PERMISSION;
 
 			private static void init() {
-				pathPrefix("Command.Reload");
+				setPathPrefix("Command.Reload");
 				PERMISSION = getString("Permission");
 			}
 
@@ -109,7 +115,7 @@ public class Settings extends SimpleSettings {
 		public static String INVALID_ARGS;
 
 		private static void init() {
-			pathPrefix("Message");
+			setPathPrefix("Message");
 			NO_CONSOLE = getString("No_Console");
 			PERMISSION_MESSAGE = getString("Permission");
 			INVALID_ARGS = getString("Invalid_Args");

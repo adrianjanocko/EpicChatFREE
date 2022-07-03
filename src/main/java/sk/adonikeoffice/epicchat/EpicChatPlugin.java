@@ -5,19 +5,13 @@ import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.Valid;
 import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.plugin.SimplePlugin;
-import org.mineacademy.fo.settings.YamlStaticConfig;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
-import sk.adonikeoffice.epicchat.listener.ChatListener;
 import sk.adonikeoffice.epicchat.settings.Settings;
-
-import java.util.Collections;
-import java.util.List;
 
 public class EpicChatPlugin extends SimplePlugin {
 
 	@Override
 	protected void onPluginStart() {
-		Common.ADD_TELL_PREFIX = false;
 		Messenger.ENABLED = true;
 		Messenger.setErrorPrefix("");
 
@@ -45,8 +39,8 @@ public class EpicChatPlugin extends SimplePlugin {
 
 		registerCommand(new ReloadCommand());
 
-		if (Settings.Chat.ENABLED)
-			registerEvents(new ChatListener());
+//		if (Settings.Chat.ENABLED)
+//			registerEvents(new ChatListener());
 	}
 
 	public static String getAuthor() {
@@ -67,11 +61,6 @@ public class EpicChatPlugin extends SimplePlugin {
 	@Override
 	public int getMetricsPluginId() {
 		return 14898;
-	}
-
-	@Override
-	public List<Class<? extends YamlStaticConfig>> getSettings() {
-		return Collections.singletonList(Settings.class);
 	}
 
 }

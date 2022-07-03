@@ -1,5 +1,5 @@
 name: EpicChat
-version: 1.0.1
+version: 1.0.2
 main: sk.adonikeoffice.epicchat.EpicChatPlugin
 author: AdoNikeOFFICE
 description: A chat formatting plugin that has many features, basically everything you will ever need.
