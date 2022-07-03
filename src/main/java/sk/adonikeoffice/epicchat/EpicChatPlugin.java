@@ -2,22 +2,23 @@ package sk.adonikeoffice.epicchat;
 
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
-import org.mineacademy.fo.Valid;
+import org.mineacademy.fo.MinecraftVersion;
 import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
+import sk.adonikeoffice.epicchat.listener.ChatListener;
 import sk.adonikeoffice.epicchat.settings.Settings;
 
 public class EpicChatPlugin extends SimplePlugin {
 
 	@Override
 	protected void onPluginStart() {
-		Messenger.ENABLED = true;
-		Messenger.setErrorPrefix("");
+		Messenger.ENABLED = false;
+		Common.setLogPrefix("EpicChat |");
 
 		Common.log(
-				Common.consoleLineSmooth(),
-				SimplePlugin.getNamed() + " " + SimplePlugin.getVersion() + " by " + getAuthor(),
+				Common.consoleLine(),
+				getNamed() + " " + getVersion() + " by " + getAuthor(),
 				" ",
 				"If you found a bug or you have an idea, please,",
 				"post it on the GitHub in the Issues section:",
@@ -25,22 +26,27 @@ public class EpicChatPlugin extends SimplePlugin {
 				" ",
 				"Or, you can join our Discord:",
 				"discord.epic-central.eu",
-				Common.consoleLineSmooth()
+				Common.consoleLine()
 		);
 
 	}
 
 	@Override
 	protected void onReloadablesStart() {
-		Valid.checkBoolean(HookManager.isPlaceholderAPILoaded(), "You need to install the PlaceholderAPI plugin, if you want to use placeholders in the chat.");
+		if (!HookManager.isPlaceholderAPILoaded())
+			Common.log(
+					"** INFO **",
+					" ",
+					"You can install PlaceholderAPI,",
+					"if you want to use placeholders from it.",
+					" ",
+					"Ignore this message, if you don't want to."
+			);
 
-		Common.setLogPrefix("EpicChat |");
-		Messenger.setSuccessPrefix(Settings.PLUGIN_PREFIX);
+		this.registerCommand(new ReloadCommand());
 
-		registerCommand(new ReloadCommand());
-
-//		if (Settings.Chat.ENABLED)
-//			registerEvents(new ChatListener());
+		if (Settings.Chat.ENABLED)
+			registerEvents(new ChatListener());
 	}
 
 	public static String getAuthor() {
@@ -61,6 +67,11 @@ public class EpicChatPlugin extends SimplePlugin {
 	@Override
 	public int getMetricsPluginId() {
 		return 14898;
+	}
+
+	@Override
+	public MinecraftVersion.V getMinimumVersion() {
+		return MinecraftVersion.V.v1_8;
 	}
 
 }

@@ -2,64 +2,69 @@ package sk.adonikeoffice.epicchat.command;
 
 import org.bukkit.entity.Player;
 import org.mineacademy.fo.Common;
-import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.command.SimpleCommand;
 import org.mineacademy.fo.plugin.SimplePlugin;
-import sk.adonikeoffice.epicchat.EpicChatPlugin;
 import sk.adonikeoffice.epicchat.settings.Settings;
-import sk.adonikeoffice.epicchat.util.Chat;
+import sk.adonikeoffice.epicchat.util.Util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReloadCommand extends SimpleCommand {
 
 	public ReloadCommand() {
-		super("epicchat|ec");
+		super("epicchat|ec|chat");
 
-		setPermission(null);
-		setAutoHandleHelp(false);
+		this.setPermission(null);
+		this.setAutoHandleHelp(false);
 	}
 
 	@Override
 	protected void onCommand() {
-		if (!isPlayer())
-			returnTell(Messenger.getSuccessPrefix() + Settings.Message.NO_CONSOLE);
+		if (!this.isPlayer())
+			this.returnTell(Settings.Message.NO_CONSOLE);
 
 		final Player player = getPlayer();
-		final boolean hasAccess = player.hasPermission(Settings.Command.Reload.PERMISSION) || player.isOp();
+		final boolean hasAccess = Util.hasPermission(player, Settings.Command.Reload.PERMISSION);
 
-		if (args.length == 0)
-			returnTell(
-					"&8" + Common.chatLineSmooth(),
-					" &4&l" + SimplePlugin.getNamed() + " &7" + SimplePlugin.getVersion(),
-					" &f&oMade by " + EpicChatPlugin.getAuthor(),
-					"&f",
-					hasAccess ? " &7Use &f/{label} reload &7to reload the plugin" : "",
-					"&8" + Common.chatLineSmooth()
-			);
+		if (this.args.length == 0) {
+			final List<String> helpMessage = new ArrayList<>();
 
-		final String param = args[0];
+			helpMessage.add("&8" + Common.chatLine());
+			helpMessage.add(Settings.PLUGIN_PREFIX + " Running EpicChatᵀᴹ &f" + SimplePlugin.getVersion());
+			helpMessage.add(Settings.PLUGIN_PREFIX + " Made by &fAdoNikeOFFICE &7in &4²⁰²²");
+
+			if (hasAccess) {
+				helpMessage.add(" ");
+				helpMessage.add(Settings.PLUGIN_PREFIX + " &7Type &4/" + this.getCurrentLabel() + " reload &7to reload this plugin.");
+			}
+
+			helpMessage.add("&8" + Common.chatLine());
+
+			this.returnTell(helpMessage);
+		}
+
+		final String param = this.args[0].toLowerCase();
 
 		if (hasAccess) {
-			if ("reload".equalsIgnoreCase(param)) {
+			if ("reload".equals(param)) {
 				try {
 					SimplePlugin.getInstance().reload();
 
-					Messenger.success(player, "Plugin has been reloaded.");
+					this.tell("Plugin has been reloaded.");
 				} catch (final Throwable t) {
-					Common.error(t, "Contact the Author of the plugin. (DISCORD AdoNikeOFFICE(hashtag)9999)");
+					Common.error(t, "Join EpicChat discord, create a ticket and report this to the author (AdoNikeOFFICE).");
 				}
 			} else
-				Messenger.success(player, Settings.Message.INVALID_ARGS);
+				this.tell(Settings.Message.INVALID_ARGS);
 		} else
-			Messenger.success(player, Settings.Message.PERMISSION_MESSAGE);
-
+			this.tell(Settings.Message.PERMISSION_MESSAGE);
 	}
 
 	@Override
 	protected List<String> tabComplete() {
-		if (Chat.hasPermission(getPlayer(), Settings.Command.Reload.PERMISSION) && args.length == 1)
-			return completeLastWord("reload");
+		if (this.args.length == 1 && Util.hasPermission(this.getPlayer(), Settings.Command.Reload.PERMISSION))
+			return this.completeLastWord("reload");
 
 		return NO_COMPLETE;
 	}

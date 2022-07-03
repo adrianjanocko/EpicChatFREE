@@ -1,7 +1,8 @@
 # !-----------------------------------------------------------------------------------------------!
 #
-#    1) To hide any message, set it to [].
+#    1) To hide message, set it to [].
 #    2) For UNICODE CHARACTERS (smileys, symbols, ..), save the file in UTF-8 encoding.
+#    3) Instead of using %% in placeholders, use {}.
 #
 # !-----------------------------------------------------------------------------------------------!
 
@@ -17,24 +18,18 @@ Chat:
   Enabled: true
 
   # -------------------------------------------------------------------------------------------------
-  # Do you want the permission to use the chat?
-  # -------------------------------------------------------------------------------------------------
-  Permission_Enabled: false
-
-  # -------------------------------------------------------------------------------------------------
   # What's the permission to use the chat?
   #
-  # Only usable when 'Permission_Enabled' is enabled (true).
+  # Set this to 'none' to disable it.
   # -------------------------------------------------------------------------------------------------
-  Permission: "chat.permission"
+  Permission: "none"
 
   # -------------------------------------------------------------------------------------------------
   # What's the permission to use the colors in the chat?
   #
-  # If player don't have this permission,
-  # he can't use colors.
+  # Set this to 'none' to disable it.
   # -------------------------------------------------------------------------------------------------
-  Permission_Color: "chat.permission.color"
+  Permission_Color: "none"
 
   # -------------------------------------------------------------------------------------------------
   # Do you want to send the chat to the console?
@@ -76,39 +71,46 @@ Chat:
   Format: "&f[&aK &7{statistic_player_kills} &cD &7%statistic_deaths%&f] {vault_prefix} &8| &f{player_name} &8>> {message}"
 
   # -------------------------------------------------------------------------------------------------
+  # Default color used in {message} placeholder in Format.
+  # -------------------------------------------------------------------------------------------------
+  Message_Color: "&f"
+
+  # -------------------------------------------------------------------------------------------------
   # What's the message shown, if player hover on chat format?
   # -------------------------------------------------------------------------------------------------
   Hover:
-    - "ahoj"
-    - "cs"
-
-  # -------------------------------------------------------------------------------------------------
-  # Default {message} color used in Format.
-  # -------------------------------------------------------------------------------------------------
-  Message_Color: "&f"
+    - "&f{player_name}'s &7Profile"
+    - " "
+    - "&4| &7First Joined In &f{player_first_join_date}"
+    - "&4| &7Time Played &f{statistic_time_played}"
+    - "&4| &7Game Mode &f{player_gamemode}"
 
   Cooldown:
     # -------------------------------------------------------------------------------------------------
     # Do you want to enable Cooldown "Spam" feature?
     # -------------------------------------------------------------------------------------------------
     Enabled: true
+
     # -------------------------------------------------------------------------------------------------
     # What's the permission, that bypasses cooldown?
+    #
+    # Set this to 'none' to disable it.
     # -------------------------------------------------------------------------------------------------
     Permission: "chat.cooldown.bypass"
+
     # -------------------------------------------------------------------------------------------------
     # What's the message when someone spams?
     #
     # Message Types:
     #  {actionbar}
     #  {chat}
-    #  {bossbar}
     #
     # Placeholders:
     #  {time} -> shows time left
     #  {time_plural} -> shows time left + second/seconds
     # -------------------------------------------------------------------------------------------------
     Message: "{actionbar}You can write again in {time_plural}."
+
     # -------------------------------------------------------------------------------------------------
     # What's the time in seconds he can write again?
     # -------------------------------------------------------------------------------------------------
@@ -119,19 +121,21 @@ Chat:
     # Do you want to enable Mention feature?
     # -------------------------------------------------------------------------------------------------
     Enabled: true
+
     # -------------------------------------------------------------------------------------------------
     # What's the message when someone mentions someone?
     #
     # Message Types:
     #  {actionbar}
     #  {chat}
-    #  {bossbar}
     # -------------------------------------------------------------------------------------------------
     Message: "{actionbar}You were mentioned by &f{0}&7."
+
     # -------------------------------------------------------------------------------------------------
-    # What's the color of mentioned name in the message?
+    # What's the color of mentioned name in the chat message?
     # -------------------------------------------------------------------------------------------------
     Color: "&a"
+
     # -------------------------------------------------------------------------------------------------
     # What's the sound played to the mentioned player?
     # -------------------------------------------------------------------------------------------------
@@ -158,9 +162,9 @@ Message:
   # -------------------------------------------------------------------------------------------------
   # What's the message, when plugin sub-command doesn't exist?
   # -------------------------------------------------------------------------------------------------
-  Invalid_Args: "Invalid arguments. Try &f/ec &7for help."
+  Invalid_Args: "Invalid arguments. Type &f/ec &7for help."
 
 # -------------------------------------------------------------------------------------------------
 # DO NOT EDIT. Otherwise it will corrupt your plugin installation!
 # -------------------------------------------------------------------------------------------------
-Version: 2
+Version: 3

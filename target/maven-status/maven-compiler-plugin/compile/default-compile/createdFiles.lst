@@ -1,14 +1,12 @@
 sk\adonikeoffice\epicchat\command\ReloadCommand.class
+sk\adonikeoffice\epicchat\util\Util.class
 sk\adonikeoffice\epicchat\settings\Settings$Command.class
-sk\adonikeoffice\epicchat\model\Packets.class
 sk\adonikeoffice\epicchat\settings\Settings$Chat$Mention.class
 sk\adonikeoffice\epicchat\EpicChatPlugin.class
 sk\adonikeoffice\epicchat\settings\Settings$Chat$Cooldown.class
-sk\adonikeoffice\epicchat\util\Chat.class
-sk\adonikeoffice\epicchat\type\MessageType.class
 sk\adonikeoffice\epicchat\settings\Settings$Message.class
 sk\adonikeoffice\epicchat\settings\Settings$Chat.class
-sk\adonikeoffice\epicchat\model\Packets$1.class
 sk\adonikeoffice\epicchat\settings\Settings$Command$Reload.class
 sk\adonikeoffice\epicchat\listener\ChatListener.class
 sk\adonikeoffice\epicchat\settings\Settings.class
+sk\adonikeoffice\epicchat\util\Util$MessageType.class

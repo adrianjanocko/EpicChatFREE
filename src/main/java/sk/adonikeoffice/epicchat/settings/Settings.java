@@ -10,7 +10,7 @@ public class Settings extends SimpleSettings {
 
 	@Override
 	protected int getConfigVersion() {
-		return 2;
+		return 3;
 	}
 
 	private static void init() {
@@ -18,7 +18,6 @@ public class Settings extends SimpleSettings {
 
 	public static class Chat {
 		public static Boolean ENABLED;
-		public static Boolean PERMISSION_ENABLED;
 		public static String PERMISSION;
 		public static String PERMISSION_COLOR;
 		public static Boolean LOG_ENABLED;
@@ -30,7 +29,6 @@ public class Settings extends SimpleSettings {
 		private static void init() {
 			setPathPrefix("Chat");
 			ENABLED = getBoolean("Enabled");
-			PERMISSION_ENABLED = getBoolean("Permission_Enabled");
 			PERMISSION = getString("Permission");
 			PERMISSION_COLOR = getString("Permission_Color");
 			LOG_ENABLED = getBoolean("Log_Enabled");
