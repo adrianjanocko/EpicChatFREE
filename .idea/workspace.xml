@@ -7,11 +7,11 @@
     <list default="true" id="fbf7e199-b33a-4a4e-a42f-03877b0c5263" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/EpicChatPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/EpicChatPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/command/ReloadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/command/ReloadCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/listener/ChatListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/listener/ChatListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/settings/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/settings/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/util/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/EpicChat-1.0.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/EpicChat-1.0.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/command/ReloadCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/command/ReloadCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/listener/ChatListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/listener/ChatListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-EpicChat-1.0.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-EpicChat-1.0.3.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="23943" />
+    <option name="totalTimeSeconds" value="25644" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -63,7 +63,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/adoni/IdeaProjects/FriendsZone&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/adoni/Desktop/kangarko-chatcontrol-red-8bd7f0f105c8&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,

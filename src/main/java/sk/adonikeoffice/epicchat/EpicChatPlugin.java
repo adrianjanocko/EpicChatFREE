@@ -10,7 +10,7 @@ import sk.adonikeoffice.epicchat.listener.ChatListener;
 import sk.adonikeoffice.epicchat.settings.Settings;
 
 public class EpicChatPlugin extends SimplePlugin {
-	
+
 	@Override
 	protected void onPluginStart() {
 		Messenger.ENABLED = false;

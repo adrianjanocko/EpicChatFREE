@@ -15,7 +15,7 @@ import sk.adonikeoffice.epicchat.util.Util;
 import java.util.List;
 
 public final class ChatListener implements Listener {
-	
+
 	@EventHandler
 	public void onChat(final AsyncPlayerChatEvent event) {
 		event.setCancelled(true);

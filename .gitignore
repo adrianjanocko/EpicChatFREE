@@ -1,0 +1,13 @@
+#################
+## IDEA
+#################
+
+# User-specific stuff
+.idea/
+.idea_modules/
+*.iml
+
+# IntelliJ
+out/
+
+target/
