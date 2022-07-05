@@ -90,7 +90,7 @@ public class Settings extends SimpleSettings {
 		}
 
 	}
-
+	
 	public static class Command {
 
 		public static class Reload {

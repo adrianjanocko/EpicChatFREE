@@ -15,7 +15,7 @@ import sk.adonikeoffice.epicchat.util.Util;
 import java.util.List;
 
 public final class ChatListener implements Listener {
-
+	
 	@EventHandler
 	public void onChat(final AsyncPlayerChatEvent event) {
 		event.setCancelled(true);
@@ -88,8 +88,8 @@ public final class ChatListener implements Listener {
 		this.sendMessage(player, replacedFormat);
 	}
 
-	private void sendMessage(final Player player, final String message) {
-		final SimpleComponent chatComponent = SimpleComponent.of(message);
+	private void sendMessage(final Player player, final String formattedMessage) {
+		final SimpleComponent chatComponent = SimpleComponent.of(formattedMessage);
 
 		final List<String> hoverMessages = Settings.Chat.HOVER;
 		hoverMessages.replaceAll(string -> Variables.replace(string, player));
@@ -100,7 +100,7 @@ public final class ChatListener implements Listener {
 			chatComponent.send(online);
 
 		if (Settings.Chat.LOG_ENABLED)
-			Common.log(message);
+			Common.log(formattedMessage);
 	}
 
 }

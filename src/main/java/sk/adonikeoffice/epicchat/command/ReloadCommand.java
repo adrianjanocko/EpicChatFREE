@@ -60,7 +60,7 @@ public class ReloadCommand extends SimpleCommand {
 		} else
 			this.tell(Settings.Message.PERMISSION_MESSAGE);
 	}
-
+	
 	@Override
 	protected List<String> tabComplete() {
 		if (this.args.length == 1 && Util.hasPermission(this.getPlayer(), Settings.Command.Reload.PERMISSION))
