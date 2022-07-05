@@ -50,7 +50,7 @@ public final class ChatListener implements Listener {
 				Util.getInstance().setLastMessageTime(Math.toIntExact(now));
 			}
 		}
-
+		
 		// FULLY FUNCTIONAL
 		if (Settings.Chat.Mention.ENABLED)
 			for (final Player target : Remain.getOnlinePlayers()) {

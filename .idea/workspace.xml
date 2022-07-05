@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbf7e199-b33a-4a4e-a42f-03877b0c5263" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/EpicChatPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/EpicChatPlugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/listener/ChatListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/adonikeoffice/epicchat/listener/ChatListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/EpicChat-1.0.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/EpicChat-1.0.3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/command/ReloadCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/command/ReloadCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/listener/ChatListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/adonikeoffice/epicchat/listener/ChatListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-EpicChat-1.0.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-EpicChat-1.0.3.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="25644" />
+    <option name="totalTimeSeconds" value="25645" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
