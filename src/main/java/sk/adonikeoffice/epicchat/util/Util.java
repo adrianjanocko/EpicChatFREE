@@ -40,7 +40,7 @@ public class Util {
 		} else
 			Common.log("Unknown message type. Available: " + actionBarType + ", " + chatType);
 	}
-	
+
 	public static boolean hasPermission(final Player player, final String permission) {
 		if (permission.equals("none"))
 			return true;

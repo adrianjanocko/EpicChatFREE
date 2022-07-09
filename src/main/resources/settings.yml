@@ -33,7 +33,7 @@ Chat:
   #
   # Set this to 'none' to disable it.
   # -------------------------------------------------------------------------------------------------
-  Permission_Color: "none"
+  Permission_Color: "epicchat.color"
 
   # -------------------------------------------------------------------------------------------------
   # Do you want to send the chat to the console?
@@ -43,7 +43,7 @@ Chat:
   # -------------------------------------------------------------------------------------------------
   # What's the chat format?
   # -------------------------------------------------------------------------------------------------
-  Format: "&f[&aK &7{statistic_player_kills} &cD &7%statistic_deaths%&f] {vault_prefix} &8| &f{player_name} &8>> {message}"
+  Format: "&f[&aK &7{statistic_player_kills} &cD &7{statistic_deaths}&f] {vault_prefix} &8| &f{player_name} &8>> {message}"
 
   # -------------------------------------------------------------------------------------------------
   # Default color used in {message} placeholder in the "Format".
@@ -54,6 +54,7 @@ Chat:
   # What's the shown message when player hovers on the chat format?
   #
   # Set this to "Hover: []" to disable it.
+  # !! Supports only PlaceholderAPI for now (In this section use %%, instead of {}) !!
   # -------------------------------------------------------------------------------------------------
   Hover:
     - "&f{player_name}'s &7Profile"

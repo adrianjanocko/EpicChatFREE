@@ -1,5 +1,6 @@
 package sk.adonikeoffice.epicchat.listener;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,7 +51,7 @@ public final class ChatListener implements Listener {
 				Util.getInstance().setLastMessageTime(Math.toIntExact(now));
 			}
 		}
-		
+
 		// FULLY FUNCTIONAL
 		if (Settings.Chat.Mention.ENABLED)
 			for (final Player target : Remain.getOnlinePlayers()) {
@@ -91,9 +92,10 @@ public final class ChatListener implements Listener {
 	private void sendMessage(final Player player, final String formattedMessage) {
 		final SimpleComponent chatComponent = SimpleComponent.of(formattedMessage);
 
-		final List<String> hoverMessages = Settings.Chat.HOVER;
-		hoverMessages.replaceAll(string -> Variables.replace(string, player));
-
+		List<String> hoverMessages = Settings.Chat.HOVER;
+//		hoverMessages.replaceAll(string -> HookManager.replacePlaceholders(player, string));
+		hoverMessages = PlaceholderAPI.setPlaceholders(player, hoverMessages);
+		
 		chatComponent.onHover(hoverMessages);
 
 		for (final Player online : Remain.getOnlinePlayers())
