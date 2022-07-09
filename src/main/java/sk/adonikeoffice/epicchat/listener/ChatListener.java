@@ -93,9 +93,9 @@ public final class ChatListener implements Listener {
 		final SimpleComponent chatComponent = SimpleComponent.of(formattedMessage);
 
 		List<String> hoverMessages = Settings.Chat.HOVER;
-//		hoverMessages.replaceAll(string -> HookManager.replacePlaceholders(player, string));
+//		hoverMessages.replaceAll(string -> Variables.replace(string, player));
 		hoverMessages = PlaceholderAPI.setPlaceholders(player, hoverMessages);
-		
+
 		chatComponent.onHover(hoverMessages);
 
 		for (final Player online : Remain.getOnlinePlayers())

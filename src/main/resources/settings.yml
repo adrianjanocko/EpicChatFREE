@@ -54,14 +54,14 @@ Chat:
   # What's the shown message when player hovers on the chat format?
   #
   # Set this to "Hover: []" to disable it.
-  # !! Supports only PlaceholderAPI for now (In this section use %%, instead of {}) !!
+  # !! Supports only PlaceholderAPI for now (In this section: built-in placeholders not supported + use %%, instead of {}) !!
   # -------------------------------------------------------------------------------------------------
   Hover:
-    - "&f{player_name}'s &7Profile"
+    - "&f%player_name%'s &7Profile"
     - " "
-    - "&4| &7First Joined In &f{player_first_join_date}"
-    - "&4| &7Time Played &f{statistic_time_played}"
-    - "&4| &7Game Mode &f{player_gamemode}"
+    - "&4| &7First Joined In &f%player_first_join_date%"
+    - "&4| &7Time Played &f%statistic_time_played%"
+    - "&4| &7Game Mode &f%player_gamemode%"
 
   Cooldown:
     # -------------------------------------------------------------------------------------------------
