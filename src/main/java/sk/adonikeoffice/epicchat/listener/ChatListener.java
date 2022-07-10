@@ -88,24 +88,23 @@ public final class ChatListener implements Listener {
 				Common.tell(player, Settings.Message.PERMISSION_MESSAGE);
 		} else
 			this.chat(player, message);
+	}
 
+	private void chat(final Player player, final String message) {
 		if (Settings.Chat.Discord.ENABLED) {
 			final JDA jda = EpicChatPlugin.getJda();
 
 			final TextChannel channel = jda.getTextChannelById(Settings.Chat.Discord.CHAT_CHANNEL_ID);
 
 			if (channel != null) {
-				final String replacedMessage = Replacer.replaceArray(Settings.Chat.Discord.DISCORD_FORMAT,
-						"player_name", player.getName(),
-						"message", message
+				final String replacedMessage = Replacer.replaceArray(Variables.replace(Settings.Chat.Discord.DISCORD_FORMAT, player),
+						"message", Common.stripColors(message)
 				);
 
 				channel.sendMessage(replacedMessage).queue();
 			}
 		}
-	}
 
-	private void chat(final Player player, final String message) {
 		String format = Variables.replace(Settings.Chat.FORMAT, player);
 		CompChatColor messageColor = Settings.Chat.MESSAGE_COLOR;
 

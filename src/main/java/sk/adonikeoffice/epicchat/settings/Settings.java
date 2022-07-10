@@ -11,7 +11,7 @@ public class Settings extends SimpleSettings {
 
 	@Override
 	protected int getConfigVersion() {
-		return 3;
+		return 4;
 	}
 
 	private static void init() {
