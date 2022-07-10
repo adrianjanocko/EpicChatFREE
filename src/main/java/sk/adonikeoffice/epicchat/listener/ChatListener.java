@@ -6,10 +6,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.mineacademy.fo.Common;
+import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.model.Replacer;
 import org.mineacademy.fo.model.SimpleComponent;
 import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.Remain;
+import sk.adonikeoffice.epicchat.settings.GroupData;
 import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.util.Util;
 
@@ -64,7 +66,7 @@ public final class ChatListener implements Listener {
 
 					message = message.replace(targetName, Settings.Chat.Mention.COLOR + "@" + targetName + (lastColor != null ? lastColor : Settings.Chat.MESSAGE_COLOR));
 
-					Util.sendType(player, Settings.Chat.Mention.MESSAGE.replace("{target_name}", targetName));
+					Util.sendType(target, Settings.Chat.Mention.MESSAGE.replace("{target_name}", targetName));
 					Settings.Chat.Mention.SOUND.play(target);
 				}
 			}
@@ -81,7 +83,12 @@ public final class ChatListener implements Listener {
 	}
 
 	private void chat(final Player player, final String message) {
-		final String format = Variables.replace(Settings.Chat.FORMAT, player);
+		String format = Variables.replace(Settings.Chat.FORMAT, player);
+
+		if (HookManager.isVaultLoaded())
+			for (final GroupData group : Settings.Chat.GROUP_FORMAT)
+				if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
+					format = Variables.replace(group.getFormat(), player);
 
 		final boolean hasColorPermission = Util.hasPermission(player, Settings.Chat.PERMISSION_COLOR);
 		final String replacedFormat = Replacer.replaceArray(format, "message", hasColorPermission ? Settings.Chat.MESSAGE_COLOR + message : Settings.Chat.MESSAGE_COLOR + Common.stripColors(message));

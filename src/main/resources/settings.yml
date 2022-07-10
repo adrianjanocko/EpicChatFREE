@@ -41,9 +41,20 @@ Chat:
   Log_Enabled: true
 
   # -------------------------------------------------------------------------------------------------
-  # What's the chat format?
+  # What's the default chat format?
   # -------------------------------------------------------------------------------------------------
   Format: "&f[&aK &7{statistic_player_kills} &cD &7{statistic_deaths}&f] {vault_prefix} &8| &f{player_name} &8>> {message}"
+
+  # -------------------------------------------------------------------------------------------------
+  # What's the chat format for specified group?
+  #
+  # For this feature Vault and Permission plugin need to be installed.
+  # -------------------------------------------------------------------------------------------------
+  Group_Format:
+    - Name: "owner"
+      Format: "&4Owner &7{player_name} &8> &c{message}"
+    - Name: "admin"
+      Format: "&2Admin &7{player_name} &8> &2{message}"
 
   # -------------------------------------------------------------------------------------------------
   # Default color used in {message} placeholder in the "Format".

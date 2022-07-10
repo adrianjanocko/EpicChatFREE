@@ -29,20 +29,35 @@ public class EpicChatPlugin extends SimplePlugin {
 				Common.consoleLine()
 		);
 
-	}
-
-	@Override
-	protected void onReloadablesStart() {
 		if (!HookManager.isPlaceholderAPILoaded())
 			Common.log(
+					Common.consoleLine(),
 					"** INFO **",
 					" ",
 					"You can install PlaceholderAPI,",
 					"if you want to use placeholders from it.",
 					" ",
-					"Ignore this message, if you don't want to."
+					"Ignore this message, if you don't want to.",
+					Common.consoleLine()
 			);
 
+
+		if (!HookManager.isVaultLoaded())
+			Common.log(
+					Common.consoleLine(),
+					"** INFO **",
+					" ",
+					"You can install Vault and Permission plugin,",
+					"if you want to use Group_Format.",
+					" ",
+					"Ignore this message, if you don't want to.",
+					Common.consoleLine()
+			);
+
+	}
+
+	@Override
+	protected void onReloadablesStart() {
 		this.registerCommand(new ReloadCommand());
 
 		if (Settings.Chat.ENABLED)

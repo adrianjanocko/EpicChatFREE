@@ -5,6 +5,7 @@ import org.mineacademy.fo.remain.CompSound;
 import org.mineacademy.fo.settings.SimpleSettings;
 
 import java.util.List;
+import java.util.Set;
 
 public class Settings extends SimpleSettings {
 
@@ -23,6 +24,7 @@ public class Settings extends SimpleSettings {
 		public static Boolean LOG_ENABLED;
 
 		public static String FORMAT;
+		public static Set<GroupData> GROUP_FORMAT;
 		public static CompChatColor MESSAGE_COLOR;
 		public static List<String> HOVER;
 
@@ -34,6 +36,7 @@ public class Settings extends SimpleSettings {
 			LOG_ENABLED = getBoolean("Log_Enabled");
 
 			FORMAT = getString("Format");
+			GROUP_FORMAT = getSet("Group_Format", GroupData.class);
 			MESSAGE_COLOR = get("Message_Color", CompChatColor.class);
 			HOVER = getStringList("Hover");
 		}
@@ -90,7 +93,7 @@ public class Settings extends SimpleSettings {
 		}
 
 	}
-	
+
 	public static class Command {
 
 		public static class Reload {
