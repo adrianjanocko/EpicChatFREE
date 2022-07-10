@@ -13,7 +13,7 @@ import java.util.List;
 public class ReloadCommand extends SimpleCommand {
 
 	public ReloadCommand() {
-		super("epicchat|ec|chat");
+		super(Settings.Chat.ALIASES);
 
 		this.setPermission(null);
 		this.setAutoHandleHelp(false);
@@ -60,7 +60,7 @@ public class ReloadCommand extends SimpleCommand {
 		} else
 			this.tell(Settings.Message.PERMISSION_MESSAGE);
 	}
-	
+
 	@Override
 	protected List<String> tabComplete() {
 		if (this.args.length == 1 && Util.hasPermission(this.getPlayer(), Settings.Command.Reload.PERMISSION))

@@ -19,25 +19,27 @@ public class Settings extends SimpleSettings {
 
 	public static class Chat {
 		public static Boolean ENABLED;
+		public static String ALIASES;
 		public static String PERMISSION;
 		public static String PERMISSION_COLOR;
 		public static Boolean LOG_ENABLED;
 
 		public static String FORMAT;
-		public static Set<GroupData> GROUP_FORMAT;
 		public static CompChatColor MESSAGE_COLOR;
+		public static Set<GroupData> GROUP_FORMAT;
 		public static List<String> HOVER;
 
 		private static void init() {
 			setPathPrefix("Chat");
 			ENABLED = getBoolean("Enabled");
+			ALIASES = getString("Aliases");
 			PERMISSION = getString("Permission");
 			PERMISSION_COLOR = getString("Permission_Color");
 			LOG_ENABLED = getBoolean("Log_Enabled");
 
 			FORMAT = getString("Format");
-			GROUP_FORMAT = getSet("Group_Format", GroupData.class);
 			MESSAGE_COLOR = get("Message_Color", CompChatColor.class);
+			GROUP_FORMAT = getSet("Group_Format", GroupData.class);
 			HOVER = getStringList("Hover");
 		}
 

@@ -10,6 +10,7 @@ import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.model.Replacer;
 import org.mineacademy.fo.model.SimpleComponent;
 import org.mineacademy.fo.model.Variables;
+import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.settings.GroupData;
 import sk.adonikeoffice.epicchat.settings.Settings;
@@ -61,10 +62,14 @@ public final class ChatListener implements Listener {
 				final int thisIndex = message.indexOf(targetName);
 
 				if (thisIndex != -1) {
-					final String firstPart = message.substring(0, thisIndex);
-					final String lastColor = Common.lastColor(Settings.Chat.MESSAGE_COLOR + firstPart);
+					CompChatColor messageColor = Settings.Chat.MESSAGE_COLOR;
 
-					message = message.replace(targetName, Settings.Chat.Mention.COLOR + "@" + targetName + (lastColor != null ? lastColor : Settings.Chat.MESSAGE_COLOR));
+					if (HookManager.isVaultLoaded())
+						for (final GroupData group : Settings.Chat.GROUP_FORMAT)
+							if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
+								messageColor = group.getMessageColor();
+
+					message = message.replace(targetName, Settings.Chat.Mention.COLOR + "@" + targetName + (messageColor != null ? messageColor : "&f"));
 
 					Util.sendType(target, Settings.Chat.Mention.MESSAGE.replace("{target_name}", targetName));
 					Settings.Chat.Mention.SOUND.play(target);
@@ -84,14 +89,17 @@ public final class ChatListener implements Listener {
 
 	private void chat(final Player player, final String message) {
 		String format = Variables.replace(Settings.Chat.FORMAT, player);
+		CompChatColor messageColor = Settings.Chat.MESSAGE_COLOR;
 
 		if (HookManager.isVaultLoaded())
 			for (final GroupData group : Settings.Chat.GROUP_FORMAT)
-				if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
-					format = Variables.replace(group.getFormat(), player);
+				if (HookManager.getPlayerPermissionGroup(player).equals(group.getName())) {
+					format = group.getFormat() != null ? Variables.replace(group.getFormat(), player) : format;
+					messageColor = group.getMessageColor() != null ? group.getMessageColor() : messageColor;
+				}
 
 		final boolean hasColorPermission = Util.hasPermission(player, Settings.Chat.PERMISSION_COLOR);
-		final String replacedFormat = Replacer.replaceArray(format, "message", hasColorPermission ? Settings.Chat.MESSAGE_COLOR + message : Settings.Chat.MESSAGE_COLOR + Common.stripColors(message));
+		final String replacedFormat = Replacer.replaceArray(format, "message", hasColorPermission ? messageColor + message : messageColor + Common.stripColors(message));
 
 		this.sendMessage(player, replacedFormat);
 	}

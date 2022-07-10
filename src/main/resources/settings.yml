@@ -22,6 +22,11 @@ Chat:
   Enabled: true
 
   # -------------------------------------------------------------------------------------------------
+  # What's the command aliases for this plugin?
+  # -------------------------------------------------------------------------------------------------
+  Aliases: "epicchat|chat"
+
+  # -------------------------------------------------------------------------------------------------
   # What's the permission to use the chat?
   #
   # Set this to 'none' to disable it.
@@ -46,20 +51,22 @@ Chat:
   Format: "&f[&aK &7{statistic_player_kills} &cD &7{statistic_deaths}&f] {vault_prefix} &8| &f{player_name} &8>> {message}"
 
   # -------------------------------------------------------------------------------------------------
+  # Color used in {message} placeholder in the "Format".
+  # -------------------------------------------------------------------------------------------------
+  Message_Color: "&f"
+
+  # -------------------------------------------------------------------------------------------------
   # What's the chat format for specified group?
   #
   # For this feature Vault and Permission plugin need to be installed.
   # -------------------------------------------------------------------------------------------------
   Group_Format:
     - Name: "owner"
-      Format: "&4Owner &7{player_name} &8> &c{message}"
+      Format: "&4Owner &7{player_name} &8> {message}"
+      Message_Color: "&c"
     - Name: "admin"
-      Format: "&2Admin &7{player_name} &8> &2{message}"
-
-  # -------------------------------------------------------------------------------------------------
-  # Default color used in {message} placeholder in the "Format".
-  # -------------------------------------------------------------------------------------------------
-  Message_Color: "&f"
+      Format: "&2Admin &7{player_name} &8> {message}"
+      Message_Color: "&a"
 
   # -------------------------------------------------------------------------------------------------
   # What's the shown message when player hovers on the chat format?
