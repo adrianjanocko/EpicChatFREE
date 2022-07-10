@@ -38,7 +38,7 @@
 
         <!-- Change to the latest version from https://github.com/kangarko/Foundation/releases
              or change to "LATEST" if you downloaded Foundation to your disk and compiled it. -->
-        <foundation.version>6.0.3</foundation.version>
+        <foundation.version>6.0.4</foundation.version>
 
         <!-- Leave on "com.github.kangarko" if you use Foundation from GitHub like most people,
              or change to "org.mineacademy" if you downloaded our library to your disk and compiled it. -->
@@ -65,7 +65,12 @@
     </pluginRepositories>
 
     <dependencies>
-
+        <dependency>
+            <groupId>net.dv8tion</groupId>
+            <artifactId>JDA</artifactId>
+            <version>5.0.0-alpha.13</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- (Optional) Access the server jar for NMS (groupId, artifactId and version do not matter,
              but keep version in artifactId and not in version if using multiple NMS imports,
              otherwise Maven will fail to import them correctly).

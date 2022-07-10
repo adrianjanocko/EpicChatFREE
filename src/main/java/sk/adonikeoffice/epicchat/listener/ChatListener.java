@@ -1,6 +1,8 @@
 package sk.adonikeoffice.epicchat.listener;
 
 import me.clip.placeholderapi.PlaceholderAPI;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.entities.TextChannel;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,6 +14,7 @@ import org.mineacademy.fo.model.SimpleComponent;
 import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
+import sk.adonikeoffice.epicchat.EpicChatPlugin;
 import sk.adonikeoffice.epicchat.settings.GroupData;
 import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.util.Util;
@@ -85,6 +88,21 @@ public final class ChatListener implements Listener {
 				Common.tell(player, Settings.Message.PERMISSION_MESSAGE);
 		} else
 			this.chat(player, message);
+
+		if (Settings.Chat.Discord.ENABLED) {
+			final JDA jda = EpicChatPlugin.getJda();
+
+			final TextChannel channel = jda.getTextChannelById(Settings.Chat.Discord.CHAT_CHANNEL_ID);
+
+			if (channel != null) {
+				final String replacedMessage = Replacer.replaceArray(Settings.Chat.Discord.DISCORD_FORMAT,
+						"player_name", player.getName(),
+						"message", message
+				);
+
+				channel.sendMessage(replacedMessage).queue();
+			}
+		}
 	}
 
 	private void chat(final Player player, final String message) {

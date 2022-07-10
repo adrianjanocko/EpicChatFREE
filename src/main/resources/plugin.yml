@@ -8,6 +8,7 @@ api-version: 1.13
 # DO NOT EDIT. This will enable Nashorn library on servers using Java 15 or greater.
 libraries:
   - org.openjdk.nashorn:nashorn-core:15.3
+  - net.dv8tion:JDA:5.0.0-alpha.13
 #
 # The commands are built at runtime, so you can change them easily within the settings.
 # Do not change anything in here, you will break the plugin and get no support.

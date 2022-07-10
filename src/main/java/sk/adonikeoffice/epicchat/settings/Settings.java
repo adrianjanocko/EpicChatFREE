@@ -94,6 +94,25 @@ public class Settings extends SimpleSettings {
 
 		}
 
+		public static class Discord {
+
+			public static Boolean ENABLED;
+			public static String TOKEN;
+			public static Long CHAT_CHANNEL_ID;
+			public static String CHAT_FORMAT;
+			public static String DISCORD_FORMAT;
+
+			private static void init() {
+				setPathPrefix("Chat.Discord");
+				ENABLED = getBoolean("Enabled");
+				TOKEN = getString("Token");
+				CHAT_CHANNEL_ID = getInstance().getLong("Chat_Channel_ID");
+				CHAT_FORMAT = getString("Chat_Format");
+				DISCORD_FORMAT = getString("Discord_Format");
+			}
+
+		}
+
 	}
 
 	public static class Command {

@@ -1,5 +1,9 @@
 package sk.adonikeoffice.epicchat;
 
+import lombok.Getter;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.MinecraftVersion;
@@ -7,9 +11,15 @@ import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
 import sk.adonikeoffice.epicchat.listener.ChatListener;
+import sk.adonikeoffice.epicchat.listener.DiscordListener;
 import sk.adonikeoffice.epicchat.settings.Settings;
 
+import javax.security.auth.login.LoginException;
+
 public class EpicChatPlugin extends SimplePlugin {
+
+	@Getter
+	public static JDA jda;
 
 	@Override
 	protected void onPluginStart() {
@@ -29,6 +39,24 @@ public class EpicChatPlugin extends SimplePlugin {
 				Common.consoleLine()
 		);
 
+		if (Settings.Chat.Discord.ENABLED && jda == null) {
+			final String token = Settings.Chat.Discord.TOKEN;
+
+			if (!token.equals("BOT_TOKEN")) {
+				Common.log("[+] Discord Bot has been enabled.");
+
+				try {
+					jda = JDABuilder.createDefault(token)
+							.setActivity(Activity.playing("Minecraft"))
+							.addEventListeners(new DiscordListener())
+							.build();
+				} catch (final LoginException e) {
+					e.printStackTrace();
+				}
+			} else
+				Common.log("[!] The Discord Token is null or empty.");
+		}
+
 		if (!HookManager.isPlaceholderAPILoaded())
 			Common.log(
 					Common.consoleLine(),
@@ -41,19 +69,17 @@ public class EpicChatPlugin extends SimplePlugin {
 					Common.consoleLine()
 			);
 
-
 		if (!HookManager.isVaultLoaded())
 			Common.log(
 					Common.consoleLine(),
 					"** INFO **",
 					" ",
 					"You can install Vault and Permission plugin,",
-					"if you want to use Group_Format.",
+					"if you want to use 'Group_Format' feature.",
 					" ",
 					"Ignore this message, if you don't want to.",
 					Common.consoleLine()
 			);
-
 	}
 
 	@Override
@@ -61,7 +87,13 @@ public class EpicChatPlugin extends SimplePlugin {
 		this.registerCommand(new ReloadCommand());
 
 		if (Settings.Chat.ENABLED)
-			registerEvents(new ChatListener());
+			this.registerEvents(new ChatListener());
+	}
+
+	@Override
+	protected void onPluginStop() {
+		if (jda != null)
+			jda.shutdownNow();
 	}
 
 	public static String getAuthor() {
@@ -74,8 +106,8 @@ public class EpicChatPlugin extends SimplePlugin {
 	}
 
 	/**
-	 * https://bstats.org/plugin/bukkit/EpicChatPlugin/14898
-	 * https://bstats.org/signatures/bukkit/EpicChatPlugin.svg
+	 * <a href="https://bstats.org/plugin/bukkit/EpicChatPlugin/14898">Epic Chat plugin bStats page</a>
+	 * <a href="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg">Epic Chat plugin Graph</a>
 	 *
 	 * @return Metrics ID
 	 */
