@@ -71,7 +71,7 @@ public final class ChatListener implements Listener {
 
 					message = message.replace(targetName, Settings.Chat.Mention.COLOR + "@" + targetName + (messageColor != null ? messageColor : "&f"));
 
-					Util.sendType(target, Settings.Chat.Mention.MESSAGE.replace("{target_name}", targetName));
+					Util.sendType(target, Settings.Chat.Mention.MESSAGE.replace("{target_name}", player.getName()));
 					Settings.Chat.Mention.SOUND.play(target);
 				}
 			}
