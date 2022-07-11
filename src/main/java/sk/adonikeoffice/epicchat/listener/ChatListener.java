@@ -83,30 +83,28 @@ public final class ChatListener implements Listener {
 				}
 			}
 
-		this.chat(player, message);
-	}
+		if (!HookManager.isLogged(player)) {
+			Common.tell(player, Message.NOT_LOGGED);
 
-	private void chat(final Player player, final String message) {
+			return;
+		}
+
+		if (HookManager.isMuted(player)) {
+			Common.tell(player, Message.MUTED);
+
+			return;
+		}
+
 		if (!Chat.PERMISSION.equals("none") && !Util.hasPermission(player, Chat.PERMISSION)) {
 			Common.tell(player, Message.NO_PERMISSION.replace("{0}", Chat.PERMISSION));
 
 			return;
 		}
 
-		if (Discord.isEnabled()) {
-			final JDA jda = EpicChatPlugin.getJda();
+		this.chat(player, message);
+	}
 
-			final TextChannel channel = jda.getTextChannelById(Discord.CHAT_CHANNEL_ID);
-
-			if (channel != null) {
-				final String replacedMessage = Replacer.replaceArray(Variables.replace(Discord.DISCORD_FORMAT, player),
-						"message", Common.stripColors(message)
-				);
-
-				channel.sendMessage(replacedMessage).queue();
-			}
-		}
-
+	private void chat(final Player player, final String message) {
 		String format = Variables.replace(Chat.FORMAT, player);
 		CompChatColor messageColor = Chat.MESSAGE_COLOR;
 
@@ -118,13 +116,14 @@ public final class ChatListener implements Listener {
 				}
 
 		final boolean hasColorPermission = Util.hasPermission(player, Chat.PERMISSION_COLOR);
-		final String replacedFormat = Replacer.replaceArray(format, "message", hasColorPermission ? messageColor + message : messageColor + Common.stripColors(message));
+		final String formattedMessage = Replacer.replaceArray(format, "message", hasColorPermission ? messageColor + message : messageColor + Common.stripColors(message));
 
-		this.sendMessage(player, replacedFormat);
+		this.sendMessage(player, formattedMessage);
+		this.sendDiscordMessage(player, message);
 	}
 
-	private void sendMessage(final Player player, final String formattedMessage) {
-		final SimpleComponent chatComponent = SimpleComponent.of(formattedMessage);
+	private void sendMessage(final Player player, final String message) {
+		final SimpleComponent chatComponent = SimpleComponent.of(message);
 
 		List<String> hoverMessages = Chat.HOVER;
 		hoverMessages = PlaceholderAPI.setPlaceholders(player, hoverMessages);
@@ -135,7 +134,22 @@ public final class ChatListener implements Listener {
 			chatComponent.send(online);
 
 		if (Chat.LOG_ENABLED)
-			Common.log(formattedMessage);
+			Common.log(message);
+	}
+
+	private void sendDiscordMessage(final Player player, final String message) {
+		if (Discord.isEnabled()) {
+			final JDA jda = EpicChatPlugin.getJda();
+			final TextChannel channel = jda.getTextChannelById(Discord.CHAT_CHANNEL_ID);
+
+			if (channel != null) {
+				final String formattedMessage = Replacer.replaceArray(Variables.replace(Discord.DISCORD_FORMAT, player),
+						"message", Common.stripColors(message)
+				);
+
+				channel.sendMessage(formattedMessage).queue();
+			}
+		}
 	}
 
 }

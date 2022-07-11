@@ -141,12 +141,16 @@ public final class Settings extends SimpleSettings {
 		public static String NO_CONSOLE;
 		public static String NO_PERMISSION;
 		public static String INVALID_ARGS;
+		public static String MUTED;
+		public static String NOT_LOGGED;
 
 		private static void init() {
 			setPathPrefix("Message");
 			NO_CONSOLE = getString("No_Console");
 			NO_PERMISSION = getString("No_Permission");
 			INVALID_ARGS = getString("Invalid_Args");
+			MUTED = getString("Muted");
+			NOT_LOGGED = getString("Not_Logged");
 		}
 
 	}
