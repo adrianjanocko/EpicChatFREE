@@ -10,7 +10,7 @@ import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.settings.Settings;
 
-public class Util {
+public final class Util {
 
 	@Getter
 	private static final Util instance = new Util();
@@ -38,7 +38,7 @@ public class Util {
 			else
 				Common.log("Invalid title message: " + message + ". Valid: " + titleType + "<title>|<subtitle>");
 		} else
-			Common.log("Unknown message type. Available: " + actionBarType + ", " + chatType);
+			Common.log("Unknown message type. Available: " + actionBarType + ", " + chatType + ", " + titleType);
 	}
 
 	public static boolean hasPermission(final Player player, final String permission) {

@@ -39,7 +39,7 @@ public class EpicChatPlugin extends SimplePlugin {
 				Common.consoleLine()
 		);
 
-		if (Settings.Chat.Discord.ENABLED && jda == null) {
+		if (Settings.Chat.Discord.isEnabled() && jda == null) {
 			final String token = Settings.Chat.Discord.TOKEN;
 
 			if (!token.equals("BOT_TOKEN")) {

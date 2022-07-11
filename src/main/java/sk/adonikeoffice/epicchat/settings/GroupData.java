@@ -8,7 +8,7 @@ import org.mineacademy.fo.remain.CompChatColor;
 
 @Getter
 @RequiredArgsConstructor
-public class GroupData implements ConfigSerializable {
+public final class GroupData implements ConfigSerializable {
 
 	private final String name;
 	private final String format;

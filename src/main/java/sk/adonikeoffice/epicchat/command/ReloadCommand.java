@@ -10,7 +10,7 @@ import sk.adonikeoffice.epicchat.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReloadCommand extends SimpleCommand {
+public final class ReloadCommand extends SimpleCommand {
 
 	public ReloadCommand() {
 		super(Settings.Chat.ALIASES);
@@ -53,12 +53,12 @@ public class ReloadCommand extends SimpleCommand {
 
 					this.tell("Plugin has been reloaded.");
 				} catch (final Throwable t) {
-					Common.error(t, "Join EpicChat discord, create a ticket and report this to the author (AdoNikeOFFICE).");
+					Common.error(t, "Join Epic Chat discord, create a ticket and report this to the author (AdoNikeOFFICE).");
 				}
 			} else
 				this.tell(Settings.Message.INVALID_ARGS);
 		} else
-			this.tell(Settings.Message.PERMISSION_MESSAGE);
+			this.tell(Settings.Message.NO_PERMISSION.replace("{0}", Settings.Command.Reload.PERMISSION));
 	}
 
 	@Override

@@ -58,15 +58,18 @@ Chat:
   # -------------------------------------------------------------------------------------------------
   # What's the chat format for specified group?
   #
+  # Example Usage:
+  # Group_Format:
+  #  - Name: "owner"
+  #    Format: "&4Owner &7{player_name} &8> {message}"
+  #    Message_Color: "&c"
+  #  - Name: "admin"
+  #    Format: "&2Admin &7{player_name} &8> {message}"
+  #    Message_Color: "&a"
+  #
   # For this feature Vault and Permission plugin need to be installed.
   # -------------------------------------------------------------------------------------------------
-  Group_Format:
-    - Name: "owner"
-      Format: "&4Owner &7{player_name} &8> {message}"
-      Message_Color: "&c"
-    - Name: "admin"
-      Format: "&2Admin &7{player_name} &8> {message}"
-      Message_Color: "&a"
+  Group_Format: [ ]
 
   # -------------------------------------------------------------------------------------------------
   # What's the shown message when player hovers on the chat format?
@@ -131,12 +134,19 @@ Chat:
 
   # -------------------------------------------------------------------------------------------------
   # You can setup own Discord bot, if you wish.
+  #
+  # How to do it? See https://github.com/AdoNikeOFFICE/EpicChat/wiki/Discord
   # -------------------------------------------------------------------------------------------------
   Discord:
     # -------------------------------------------------------------------------------------------------
     # Do you want to enable Discord feature?
     # -------------------------------------------------------------------------------------------------
     Enabled: false
+
+    # -------------------------------------------------------------------------------------------------
+    # Do you want to send the discord message send to Minecraft chat to the console?
+    # -------------------------------------------------------------------------------------------------
+    Log_Enabled: true
 
     # -------------------------------------------------------------------------------------------------
     # The Discord bot Token.
@@ -155,7 +165,7 @@ Chat:
     # -------------------------------------------------------------------------------------------------
     # What's the message sent in the Minecraft chat?
     # -------------------------------------------------------------------------------------------------
-    Chat_Format: "&9&lDiscord &8| &f{member_mention} &7wrote &f{message}"
+    Chat_Format: "{chat}&9&lDiscord &8| &f{member_mention} &7wrote &f{message}"
 
     # -------------------------------------------------------------------------------------------------
     # What's the message sent in the Discord channel?
@@ -180,7 +190,7 @@ Message:
   # -------------------------------------------------------------------------------------------------
   # What's the permission message, when player don't have specific permission?
   # -------------------------------------------------------------------------------------------------
-  Permission: "You don't have enough permission to use this."
+  No_Permission: "You don't have enough permission to use this. ({0})"
 
   # -------------------------------------------------------------------------------------------------
   # What's the message, when plugin sub-command doesn't exist?

@@ -7,7 +7,7 @@ import org.mineacademy.fo.settings.SimpleSettings;
 import java.util.List;
 import java.util.Set;
 
-public class Settings extends SimpleSettings {
+public final class Settings extends SimpleSettings {
 
 	@Override
 	protected int getConfigVersion() {
@@ -97,6 +97,7 @@ public class Settings extends SimpleSettings {
 		public static class Discord {
 
 			public static Boolean ENABLED;
+			public static Boolean LOG_ENABLED;
 			public static String TOKEN;
 			public static Long CHAT_CHANNEL_ID;
 			public static String CHAT_FORMAT;
@@ -105,10 +106,15 @@ public class Settings extends SimpleSettings {
 			private static void init() {
 				setPathPrefix("Chat.Discord");
 				ENABLED = getBoolean("Enabled");
+				LOG_ENABLED = getBoolean("Log_Enabled");
 				TOKEN = getString("Token");
 				CHAT_CHANNEL_ID = getInstance().getLong("Chat_Channel_ID");
 				CHAT_FORMAT = getString("Chat_Format");
 				DISCORD_FORMAT = getString("Discord_Format");
+			}
+
+			public static boolean isEnabled() {
+				return ENABLED && Chat.ENABLED;
 			}
 
 		}
@@ -133,13 +139,13 @@ public class Settings extends SimpleSettings {
 	public static class Message {
 
 		public static String NO_CONSOLE;
-		public static String PERMISSION_MESSAGE;
+		public static String NO_PERMISSION;
 		public static String INVALID_ARGS;
 
 		private static void init() {
 			setPathPrefix("Message");
 			NO_CONSOLE = getString("No_Console");
-			PERMISSION_MESSAGE = getString("Permission");
+			NO_PERMISSION = getString("No_Permission");
 			INVALID_ARGS = getString("Invalid_Args");
 		}
 
