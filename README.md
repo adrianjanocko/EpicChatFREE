@@ -10,6 +10,7 @@ Plugin for download is available here `https://www.mc-market.org/resources/23475
 ## Testimonials
 
 FROM THE AUTHOR
+
 ![image](https://user-images.githubusercontent.com/65062119/178513756-6b7d3c0b-46d6-4e07-8a4e-dde93ab50565.png)
 ![image](https://user-images.githubusercontent.com/65062119/178513772-501e22c2-4a8f-46ac-9af6-becb5b1e6853.png)
 ![image](https://user-images.githubusercontent.com/65062119/178513784-3223a6df-5f56-48b8-a64a-a59404dfbe85.png)
@@ -42,6 +43,7 @@ FROM THE AUTHOR
 ![image](https://user-images.githubusercontent.com/65062119/178514413-1fff7306-00b0-44c2-bbb8-5056283b8c75.png)
 
 FROM THE CUSTOMERS
+
 ![image](https://user-images.githubusercontent.com/65062119/178514450-20bde05a-c01d-4f2d-ba03-a3acc793eb34.png)
 ![image](https://user-images.githubusercontent.com/65062119/178514511-6020f0a8-4e23-4d7b-90cf-185b00198374.png)
 
