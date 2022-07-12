@@ -1,3 +1,4 @@
+<img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg">
 ![image](https://user-images.githubusercontent.com/65062119/177041134-8cb1da45-e940-4aea-8b75-a7383877754f.png)
 
 If you found a bug or you have an idea, please, post it here on the
@@ -9,8 +10,6 @@ Or, you can join our discord and create a ticket.
 <a/>
 
 Plugin for download is available here `https://www.mc-market.org/resources/23475/`
-
-<img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg">
 
 ## Testimonials
 
