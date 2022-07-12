@@ -11,6 +11,8 @@ Plugin for download is available here `https://www.mc-market.org/resources/23475
 ![image](https://user-images.githubusercontent.com/65062119/178513756-6b7d3c0b-46d6-4e07-8a4e-dde93ab50565.png)
 ![image](https://user-images.githubusercontent.com/65062119/178513772-501e22c2-4a8f-46ac-9af6-becb5b1e6853.png)
 ![image](https://user-images.githubusercontent.com/65062119/178513784-3223a6df-5f56-48b8-a64a-a59404dfbe85.png)
+![image](https://user-images.githubusercontent.com/65062119/178513892-e4519a92-9e8c-49f7-8466-18da4d4dfa7d.png)
+![image](https://user-images.githubusercontent.com/65062119/178514008-3cc37cea-4f82-408e-bc56-8af3c666c818.png)
 ![image](https://user-images.githubusercontent.com/65062119/178513798-4c886032-5180-4668-9f96-543667d5f723.png)
 
 ## License
