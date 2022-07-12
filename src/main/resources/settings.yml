@@ -48,12 +48,12 @@ Chat:
   # -------------------------------------------------------------------------------------------------
   # What's the default chat format?
   # -------------------------------------------------------------------------------------------------
-  Format: "&f[&aK &7{statistic_player_kills} &cD &7{statistic_deaths}&f] {vault_prefix} &8| &f{player_name} &8>> {message}"
+  Format: "{vault_prefix} &f{player_name} &8• {message}"
 
   # -------------------------------------------------------------------------------------------------
   # Color used in {message} placeholder in the "Format".
   # -------------------------------------------------------------------------------------------------
-  Message_Color: "&f"
+  Message_Color: "&7"
 
   # -------------------------------------------------------------------------------------------------
   # What's the chat format for specified group?
@@ -61,7 +61,7 @@ Chat:
   # Example Usage:
   # Group_Format:
   #  - Name: "owner"
-  #    Format: "&4Owner &7{player_name} &8> {message}"
+  #    Format: "{vault_prefix} &f{player_name} &8• {message}"
   #    Message_Color: "&c"
   #  - Name: "admin"
   #    Format: "&2Admin &7{player_name} &8> {message}"
@@ -78,11 +78,15 @@ Chat:
   # !! Supports only PlaceholderAPI for now (In this section: built-in placeholders not supported + use %%, instead of {}) !!
   # -------------------------------------------------------------------------------------------------
   Hover:
-    - "&f%player_name%'s &7Profile"
+    - "&8• &f%player_name%'s &7Profile"
     - " "
-    - "&4| &7First Joined In &f%player_first_join_date%"
-    - "&4| &7Time Played &f%statistic_time_played%"
-    - "&4| &7Game Mode &f%player_gamemode%"
+    - " &2| &7First Joined &a%player_first_join_date%"
+    - " &2| &7Time Played &a%statistic_time_played:days%d %statistic_time_played:hours%h %statistic_time_played:minutes%m"
+    - " "
+    - " &3| &7Kills &b%statistic_player_kills% &7kill(s)"
+    - " &3| &7Deaths &b%statistic_deaths% &7death(s)"
+    - " "
+    - " &8&oMessage sent at %localtime_time%"
 
   Cooldown:
     # -------------------------------------------------------------------------------------------------
@@ -104,7 +108,7 @@ Chat:
     # > {time} - shows time left
     # > {time_plural} - shows time left + second/seconds
     # -------------------------------------------------------------------------------------------------
-    Message: "{actionbar}You can write again in {time_plural}."
+    Message: "{actionbar}You can write again in &f{time_plural}&7."
 
     # -------------------------------------------------------------------------------------------------
     # What's the time in seconds that player can write again?
@@ -190,7 +194,7 @@ Message:
   # -------------------------------------------------------------------------------------------------
   # What's the permission message, when player don't have specific permission?
   # -------------------------------------------------------------------------------------------------
-  No_Permission: "You don't have enough permission to use this. ({0})"
+  No_Permission: "You don't have enough permission to use this. &f({0})"
 
   # -------------------------------------------------------------------------------------------------
   # What's the message, when plugin sub-command doesn't exist?
