@@ -1,5 +1,5 @@
 <img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg">
-![image](https://user-images.githubusercontent.com/65062119/177041134-8cb1da45-e940-4aea-8b75-a7383877754f.png)
+![1](https://user-images.githubusercontent.com/65062119/178519330-e296ee67-5e0d-4432-badd-4c573dd329c8.png)
 
 If you found a bug or you have an idea, please, post it here on the
 GitHub in the Issues section. https://github.com/AdoNikeOFFICE/EpicChat/issues
