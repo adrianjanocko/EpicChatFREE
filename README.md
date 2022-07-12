@@ -1,5 +1,4 @@
 <img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg"><img/>
-
 ![1](https://user-images.githubusercontent.com/65062119/178519330-e296ee67-5e0d-4432-badd-4c573dd329c8.png)
 
 If you found a bug or you have an idea, please, post it here on the
