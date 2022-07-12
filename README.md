@@ -7,6 +7,12 @@ Plugin for download is available here `https://www.mc-market.org/resources/23475
 
 <img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg">
 
+## Testimonials
+![image](https://user-images.githubusercontent.com/65062119/178513756-6b7d3c0b-46d6-4e07-8a4e-dde93ab50565.png)
+![image](https://user-images.githubusercontent.com/65062119/178513772-501e22c2-4a8f-46ac-9af6-becb5b1e6853.png)
+![image](https://user-images.githubusercontent.com/65062119/178513784-3223a6df-5f56-48b8-a64a-a59404dfbe85.png)
+![image](https://user-images.githubusercontent.com/65062119/178513798-4c886032-5180-4668-9f96-543667d5f723.png)
+
 ## License
 
 ```
