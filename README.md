@@ -1,7 +1,12 @@
 ![image](https://user-images.githubusercontent.com/65062119/177041134-8cb1da45-e940-4aea-8b75-a7383877754f.png)
 
 If you found a bug or you have an idea, please, post it here on the
-GitHub in the Issues section. `https://github.com/AdoNikeOFFICE/EpicChat/issues`
+GitHub in the Issues section. https://github.com/AdoNikeOFFICE/EpicChat/issues
+
+Or, you can join our discord and create a ticket.
+<a href="https://discord.gg/k7w5KPnRKv">
+  ![3](https://user-images.githubusercontent.com/65062119/178519056-26107491-3d74-464c-9bcf-17e50ad5f853.png)
+<a/>
 
 Plugin for download is available here `https://www.mc-market.org/resources/23475/`
 
