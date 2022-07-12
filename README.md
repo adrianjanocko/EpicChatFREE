@@ -48,7 +48,6 @@ FROM THE AUTHOR
 ![image](https://user-images.githubusercontent.com/65062119/178514413-1fff7306-00b0-44c2-bbb8-5056283b8c75.png)
 
 ![image](https://user-images.githubusercontent.com/65062119/178567030-85e6c983-ed79-46e1-821b-6b842e2c3663.png)
-
 ![image](https://user-images.githubusercontent.com/65062119/178567049-9f02be47-bfcd-4b9f-ac1e-b5c410eeb35b.png)
 
 FROM THE CUSTOMERS
