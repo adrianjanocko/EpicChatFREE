@@ -5,6 +5,7 @@ If you found a bug or you have an idea, please, post it here on the
 GitHub in the Issues section. https://github.com/AdoNikeOFFICE/EpicChat/issues
 
 Or, you can join our discord and create a ticket.
+
 https://discord.gg/k7w5KPnRKv
 
 Plugin for download is available:
