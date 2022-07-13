@@ -17,7 +17,7 @@ Prefix: "&4&lEpicChat &8//&7"
 
 Chat:
   # -------------------------------------------------------------------------------------------------
-  # Do you want to enable the chat?
+  # Do you want to enable this feature?
   # -------------------------------------------------------------------------------------------------
   Enabled: true
 
@@ -110,7 +110,7 @@ Chat:
 
   Cooldown:
     # -------------------------------------------------------------------------------------------------
-    # Do you want to enable Cooldown "Anti-Spam" feature?
+    # Do you want to enable this feature?
     # -------------------------------------------------------------------------------------------------
     Enabled: true
 
@@ -163,7 +163,7 @@ Chat:
   # -------------------------------------------------------------------------------------------------
   Discord:
     # -------------------------------------------------------------------------------------------------
-    # Do you want to enable Discord feature?
+    # Do you want to enable this feature?
     # -------------------------------------------------------------------------------------------------
     Enabled: false
 
@@ -196,6 +196,35 @@ Chat:
     # -------------------------------------------------------------------------------------------------
     Discord_Format: "Minecraft | [MOB KILLS: {statistic_mob_kills}] {player_name} wrote {message}"
 
+  # -------------------------------------------------------------------------------------------------
+  # What's the questions to ask to the players?
+  # -------------------------------------------------------------------------------------------------
+  Question:
+    # -------------------------------------------------------------------------------------------------
+    # Do you want to enable this feature?
+    # -------------------------------------------------------------------------------------------------
+    Enabled: true
+
+    # -------------------------------------------------------------------------------------------------
+    # What's the time for repeating the question?
+    # -------------------------------------------------------------------------------------------------
+    Repeat_Every: "10 minutes"
+
+    # -------------------------------------------------------------------------------------------------
+    # What's the time to cancel the question, when inactive?
+    # -------------------------------------------------------------------------------------------------
+    Inactive_Cancel: "1 minute"
+
+    Questions:
+      - Question: "&7[?] &fWhat is the answer to the life, the universe and everything? &7[?]"
+        Answer: "42"
+      - Question: "&7[?] &fMake up the word 'E__c' &7[?]"
+        Answer: "Epic"
+      - Question: "&7[?] &fName of the Minecraft creator? &7[?]"
+        Answer: "Notch"
+      - Question: "&7[?] &fPut the word together. 'RDIT' &7[?]"
+        Answer: "Dirt"
+
 Command:
   Reload:
     # -------------------------------------------------------------------------------------------------
@@ -224,7 +253,7 @@ Message:
   # -------------------------------------------------------------------------------------------------
   # What's the message, when player is muted?
   #
-  # This message supports: [Essentials, CMI, BanManager & LiteBans]
+  # This message supports: [Essentials, CMI, BanManager, AdvancedBans & LiteBans]
   # -------------------------------------------------------------------------------------------------
   Muted: "You can't use the chat, while you are muted."
 
@@ -235,7 +264,11 @@ Message:
   # -------------------------------------------------------------------------------------------------
   Not_Logged: "You can't use the chat, while you are not logged."
 
+  Question_Message:
+    Guessed: "&f{0} &7have guessed the answer! &f({1})"
+    Inactive_Cancel: "The question was inactive. Expired, wait for the new one!"
+
 # -------------------------------------------------------------------------------------------------
 # DO NOT EDIT. Otherwise it will corrupt your plugin installation!
 # -------------------------------------------------------------------------------------------------
-Version: 4
+Version: 5

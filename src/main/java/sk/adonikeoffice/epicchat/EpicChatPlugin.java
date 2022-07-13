@@ -8,13 +8,18 @@ import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.MinecraftVersion;
 import org.mineacademy.fo.model.HookManager;
+import org.mineacademy.fo.model.SimpleTime;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
 import sk.adonikeoffice.epicchat.listener.ChatListener;
 import sk.adonikeoffice.epicchat.listener.DiscordListener;
-import sk.adonikeoffice.epicchat.settings.Settings;
+import sk.adonikeoffice.epicchat.task.QuestionTask;
 
 import javax.security.auth.login.LoginException;
+
+import static sk.adonikeoffice.epicchat.settings.Settings.Chat;
+import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Discord;
+import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Question;
 
 public class EpicChatPlugin extends SimplePlugin {
 
@@ -39,8 +44,8 @@ public class EpicChatPlugin extends SimplePlugin {
 				Common.consoleLine()
 		);
 
-		if (Settings.Chat.Discord.isEnabled() && jda == null) {
-			final String token = Settings.Chat.Discord.TOKEN;
+		if (Discord.isEnabled() && jda == null) {
+			final String token = Discord.TOKEN;
 
 			if (!token.equals("BOT_TOKEN")) {
 				Common.log("[+] Discord Bot has been enabled.");
@@ -86,8 +91,11 @@ public class EpicChatPlugin extends SimplePlugin {
 	protected void onReloadablesStart() {
 		this.registerCommand(new ReloadCommand());
 
-		if (Settings.Chat.ENABLED)
+		if (Chat.ENABLED)
 			this.registerEvents(new ChatListener());
+
+		if (Question.ENABLED)
+			Common.runTimerAsync(SimpleTime.from("3 minutes").getTimeTicks(), Question.REPEAT_EVERY.getTimeTicks(), new QuestionTask());
 	}
 
 	@Override

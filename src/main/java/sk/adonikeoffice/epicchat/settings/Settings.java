@@ -1,10 +1,12 @@
 package sk.adonikeoffice.epicchat.settings;
 
+import org.mineacademy.fo.model.SimpleTime;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.CompSound;
 import org.mineacademy.fo.settings.SimpleSettings;
 import sk.adonikeoffice.epicchat.data.EmojiData;
 import sk.adonikeoffice.epicchat.data.GroupData;
+import sk.adonikeoffice.epicchat.data.QuestionData;
 
 import java.util.List;
 import java.util.Set;
@@ -13,10 +15,7 @@ public final class Settings extends SimpleSettings {
 
 	@Override
 	protected int getConfigVersion() {
-		return 4;
-	}
-
-	private static void init() {
+		return 5;
 	}
 
 	public static class Chat {
@@ -123,6 +122,23 @@ public final class Settings extends SimpleSettings {
 
 		}
 
+		public static class Question {
+
+			public static Boolean ENABLED;
+			public static SimpleTime REPEAT_EVERY;
+			public static SimpleTime INACTIVE_CANCEL;
+			public static Set<QuestionData> QUESTIONS;
+
+			private static void init() {
+				setPathPrefix("Chat.Question");
+				ENABLED = getBoolean("Enabled");
+				REPEAT_EVERY = getTime("Repeat_Every");
+				INACTIVE_CANCEL = getTime("Inactive_Cancel");
+				QUESTIONS = getSet("Questions", QuestionData.class);
+			}
+
+		}
+
 	}
 
 	public static class Command {
@@ -155,6 +171,19 @@ public final class Settings extends SimpleSettings {
 			INVALID_ARGS = getString("Invalid_Args");
 			MUTED = getString("Muted");
 			NOT_LOGGED = getString("Not_Logged");
+		}
+
+		public static class Question {
+
+			public static String GUESSED;
+			public static String INACTIVE_CANCEL;
+
+			private static void init() {
+				setPathPrefix("Message.Question_Message");
+				GUESSED = getString("Guessed");
+				INACTIVE_CANCEL = getString("Inactive_Cancel");
+			}
+
 		}
 
 	}

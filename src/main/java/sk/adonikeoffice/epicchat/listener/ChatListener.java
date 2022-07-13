@@ -1,6 +1,7 @@
 package sk.adonikeoffice.epicchat.listener;
 
 import me.clip.placeholderapi.PlaceholderAPI;
+import me.leoko.advancedban.manager.PunishmentManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.bukkit.entity.Player;
@@ -18,6 +19,8 @@ import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.EpicChatPlugin;
 import sk.adonikeoffice.epicchat.data.EmojiData;
 import sk.adonikeoffice.epicchat.data.GroupData;
+import sk.adonikeoffice.epicchat.settings.Settings;
+import sk.adonikeoffice.epicchat.task.QuestionTask;
 import sk.adonikeoffice.epicchat.util.Util;
 
 import java.util.List;
@@ -84,6 +87,19 @@ public final class ChatListener implements Listener {
 				}
 			}
 
+		if (Question.ENABLED) {
+			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(QuestionTask.getQuestion().getAnswer().toLowerCase())) {
+				final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
+						"0", player.getName(),
+						"1", QuestionTask.getQuestion().getAnswer()
+				);
+
+				Common.runLater(1, () -> Common.broadcast(replacedMessage));
+
+				QuestionTask.stopQuestion();
+			}
+		}
+
 		for (final EmojiData emoji : EMOJIS) {
 			final String emojiToReplace = emoji.getWhatToReplace();
 			final int thisIndex = message.indexOf(emojiToReplace);
@@ -98,7 +114,7 @@ public final class ChatListener implements Listener {
 			return;
 		}
 
-		if (HookManager.isMuted(player)) {
+		if (isMuted(player)) {
 			Common.tell(player, Message.MUTED);
 
 			return;
@@ -159,6 +175,10 @@ public final class ChatListener implements Listener {
 				channel.sendMessage(formattedMessage).queue();
 			}
 		}
+	}
+
+	private boolean isMuted(final Player player) {
+		return HookManager.isMuted(player) || Common.doesPluginExist("AdvancedBan") && PunishmentManager.get().isMuted(player.getUniqueId().toString());
 	}
 
 }
