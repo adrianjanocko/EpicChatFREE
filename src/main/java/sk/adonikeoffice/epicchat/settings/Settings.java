@@ -21,7 +21,7 @@ public final class Settings extends SimpleSettings {
 
 	public static class Chat {
 		public static Boolean ENABLED;
-		public static String ALIASES;
+		public static List<String> ALIASES;
 		public static String PERMISSION;
 		public static String PERMISSION_COLOR;
 		public static Boolean LOG_ENABLED;
@@ -35,7 +35,7 @@ public final class Settings extends SimpleSettings {
 		private static void init() {
 			setPathPrefix("Chat");
 			ENABLED = getBoolean("Enabled");
-			ALIASES = getString("Aliases");
+			ALIASES = getStringList("Aliases");
 			PERMISSION = getString("Permission");
 			PERMISSION_COLOR = getString("Permission_Color");
 			LOG_ENABLED = getBoolean("Log_Enabled");

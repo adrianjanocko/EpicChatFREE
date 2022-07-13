@@ -13,8 +13,9 @@ import java.util.List;
 public final class ReloadCommand extends SimpleCommand {
 
 	public ReloadCommand() {
-		super(Settings.Chat.ALIASES);
+		super("epicchat");
 
+		this.setAliases(Settings.Chat.ALIASES);
 		this.setPermission(null);
 		this.setAutoHandleHelp(false);
 	}
