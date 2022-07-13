@@ -8,9 +8,9 @@ import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.MinecraftVersion;
 import org.mineacademy.fo.model.HookManager;
-import org.mineacademy.fo.model.SimpleTime;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
+import sk.adonikeoffice.epicchat.data.PlayerData;
 import sk.adonikeoffice.epicchat.listener.ChatListener;
 import sk.adonikeoffice.epicchat.listener.DiscordListener;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
@@ -19,7 +19,6 @@ import javax.security.auth.login.LoginException;
 
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat;
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Discord;
-import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Question;
 
 public class EpicChatPlugin extends SimplePlugin {
 
@@ -89,13 +88,17 @@ public class EpicChatPlugin extends SimplePlugin {
 
 	@Override
 	protected void onReloadablesStart() {
+		PlayerData.loadPlayers();
+
 		this.registerCommand(new ReloadCommand());
 
 		if (Chat.ENABLED)
 			this.registerEvents(new ChatListener());
 
-		if (Question.ENABLED)
-			Common.runTimerAsync(SimpleTime.from("3 minutes").getTimeTicks(), Question.REPEAT_EVERY.getTimeTicks(), new QuestionTask());
+		if (Chat.Question.ENABLED)
+			Common.runTimerAsync(Chat.Question.REPEAT_EVERY.getTimeTicks(), new QuestionTask());
+
+		HookManager.addPlaceholder("question_answers", (target) -> String.valueOf(PlayerData.findPlayer(target).getReactedTimes()));
 	}
 
 	@Override

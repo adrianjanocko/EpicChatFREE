@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.model.Replacer;
@@ -19,6 +20,7 @@ import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.EpicChatPlugin;
 import sk.adonikeoffice.epicchat.data.EmojiData;
 import sk.adonikeoffice.epicchat.data.GroupData;
+import sk.adonikeoffice.epicchat.data.PlayerData;
 import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
 import sk.adonikeoffice.epicchat.util.Util;
@@ -30,6 +32,14 @@ import static sk.adonikeoffice.epicchat.settings.Settings.Chat.*;
 import static sk.adonikeoffice.epicchat.settings.Settings.Message;
 
 public final class ChatListener implements Listener {
+
+	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+	public void onJoin(final PlayerJoinEvent event) {
+		final Player player = event.getPlayer();
+
+		if (!PlayerData.isLoaded(player))
+			PlayerData.createPlayer(player.getName());
+	}
 
 	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
 	public void onChat(final AsyncPlayerChatEvent event) {
@@ -66,6 +76,24 @@ public final class ChatListener implements Listener {
 			}
 		}
 
+		if (!HookManager.isLogged(player)) {
+			Common.tell(player, Message.NOT_LOGGED);
+
+			return;
+		}
+
+		if (isMuted(player)) {
+			Common.tell(player, Message.MUTED);
+
+			return;
+		}
+
+		if (!Chat.PERMISSION.equals("none") && !Util.hasPermission(player, Chat.PERMISSION)) {
+			Common.tell(player, Message.NO_PERMISSION.replace("{0}", Chat.PERMISSION));
+
+			return;
+		}
+
 		// FULLY FUNCTIONAL
 		if (Mention.ENABLED)
 			for (final Player target : Remain.getOnlinePlayers()) {
@@ -87,14 +115,18 @@ public final class ChatListener implements Listener {
 				}
 			}
 
-		if (Question.ENABLED) {
+		if (Chat.Question.ENABLED) {
 			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(QuestionTask.getQuestion().getAnswer().toLowerCase())) {
 				final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
 						"0", player.getName(),
 						"1", QuestionTask.getQuestion().getAnswer()
 				);
 
-				Common.runLater(1, () -> Common.broadcast(replacedMessage));
+				Common.runLater(1, () -> {
+					Common.broadcast(replacedMessage);
+
+					PlayerData.findPlayer(player).increaseReactedTimes();
+				});
 
 				QuestionTask.stopQuestion();
 			}
@@ -106,24 +138,6 @@ public final class ChatListener implements Listener {
 
 			if (thisIndex != -1)
 				message = message.replace(emojiToReplace, emoji.getReplaceTo());
-		}
-
-		if (!HookManager.isLogged(player)) {
-			Common.tell(player, Message.NOT_LOGGED);
-
-			return;
-		}
-
-		if (isMuted(player)) {
-			Common.tell(player, Message.MUTED);
-
-			return;
-		}
-
-		if (!Chat.PERMISSION.equals("none") && !Util.hasPermission(player, Chat.PERMISSION)) {
-			Common.tell(player, Message.NO_PERMISSION.replace("{0}", Chat.PERMISSION));
-
-			return;
 		}
 
 		this.chat(player, message);
