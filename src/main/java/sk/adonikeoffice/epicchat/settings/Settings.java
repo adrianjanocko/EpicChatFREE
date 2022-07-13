@@ -3,6 +3,8 @@ package sk.adonikeoffice.epicchat.settings;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.CompSound;
 import org.mineacademy.fo.settings.SimpleSettings;
+import sk.adonikeoffice.epicchat.data.EmojiData;
+import sk.adonikeoffice.epicchat.data.GroupData;
 
 import java.util.List;
 import java.util.Set;
@@ -28,6 +30,7 @@ public final class Settings extends SimpleSettings {
 		public static CompChatColor MESSAGE_COLOR;
 		public static Set<GroupData> GROUP_FORMAT;
 		public static List<String> HOVER;
+		public static Set<EmojiData> EMOJIS;
 
 		private static void init() {
 			setPathPrefix("Chat");
@@ -41,6 +44,7 @@ public final class Settings extends SimpleSettings {
 			MESSAGE_COLOR = get("Message_Color", CompChatColor.class);
 			GROUP_FORMAT = getSet("Group_Format", GroupData.class);
 			HOVER = getStringList("Hover");
+			EMOJIS = getSet("Emojis", EmojiData.class);
 		}
 
 		public static class Mention {

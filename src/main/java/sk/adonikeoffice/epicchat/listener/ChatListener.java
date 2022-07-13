@@ -16,7 +16,8 @@ import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.EpicChatPlugin;
-import sk.adonikeoffice.epicchat.settings.GroupData;
+import sk.adonikeoffice.epicchat.data.EmojiData;
+import sk.adonikeoffice.epicchat.data.GroupData;
 import sk.adonikeoffice.epicchat.util.Util;
 
 import java.util.List;
@@ -82,6 +83,14 @@ public final class ChatListener implements Listener {
 					Mention.SOUND.play(target);
 				}
 			}
+
+		for (final EmojiData emoji : EMOJIS) {
+			final String emojiToReplace = emoji.getWhatToReplace();
+			final int thisIndex = message.indexOf(emojiToReplace);
+
+			if (thisIndex != -1)
+				message = message.replace(emojiToReplace, emoji.getReplaceTo());
+		}
 
 		if (!HookManager.isLogged(player)) {
 			Common.tell(player, Message.NOT_LOGGED);

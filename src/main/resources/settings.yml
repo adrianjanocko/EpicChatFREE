@@ -88,6 +88,23 @@ Chat:
     - " "
     - " &8&oMessage sent at %localtime_time%"
 
+  # -------------------------------------------------------------------------------------------------
+  # What's the emojis, that can be replaced in the chat?
+  #
+  # Set this to "Emojis: []" to disable it.
+  # -------------------------------------------------------------------------------------------------
+  Emojis:
+    - What_To_Replace: ":)"
+      Replace_To: "☺"
+    - What_To_Replace: "=)"
+      Replace_To: "☻"
+    - What_To_Replace: ":check_mark:"
+      Replace_To: "☑"
+    - What_To_Replace: ":x:"
+      Replace_To: "⊠"
+    - What_To_Replace: "o/"
+      Replace_To: "(づ｡◕‿‿◕｡)づ"
+
   Cooldown:
     # -------------------------------------------------------------------------------------------------
     # Do you want to enable Cooldown "Anti-Spam" feature?

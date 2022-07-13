@@ -1,4 +1,4 @@
-package sk.adonikeoffice.epicchat.settings;
+package sk.adonikeoffice.epicchat.data;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
