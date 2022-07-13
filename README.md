@@ -58,6 +58,10 @@ FROM THE AUTHOR
 --
 ![image](https://user-images.githubusercontent.com/65062119/178567049-9f02be47-bfcd-4b9f-ac1e-b5c410eeb35b.png)
 
+![image](https://user-images.githubusercontent.com/65062119/178835569-3d817634-3781-463d-8cc8-6777d9441d38.png)
+--
+![image](https://user-images.githubusercontent.com/65062119/178835622-2befe053-2d82-4661-ab5f-119bd7c3a47a.png)
+
 FROM THE CUSTOMERS
 
 ![image](https://user-images.githubusercontent.com/65062119/178514450-20bde05a-c01d-4f2d-ba03-a3acc793eb34.png)
