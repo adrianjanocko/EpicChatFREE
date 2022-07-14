@@ -36,7 +36,7 @@ public final class DiscordListener extends ListenerAdapter {
 				);
 
 				for (final Player player : Remain.getOnlinePlayers())
-					Util.sendType(player, replacedMessage);
+					Util.sendType(player, replacedMessage, false);
 
 				if (Discord.LOG_ENABLED)
 					Common.log(replacedMessage);

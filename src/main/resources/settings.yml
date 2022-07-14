@@ -89,7 +89,16 @@ Chat:
     - " &3| &7Kills &b%statistic_player_kills% &7kill(s)"
     - " &3| &7Deaths &b%statistic_deaths% &7death(s)"
     - " "
-    - " &8&oMessage sent at %localtime_time%"
+    - " &e> Click to send a message to this player"
+    - " "
+    - " &8&oMessage sent on %localtime_time%"
+
+  # -------------------------------------------------------------------------------------------------
+  # What's the suggested message, when player clicks to the chat format?
+  #
+  # Set this to "Hover_Click_Command: []" to disable it.
+  # -------------------------------------------------------------------------------------------------
+  Hover_Click_Command: "/msg {0} "
 
   # -------------------------------------------------------------------------------------------------
   # What's the emojis, that can be replaced in the chat?
@@ -107,6 +116,16 @@ Chat:
       Replace_To: "⊠"
     - What_To_Replace: "o/"
       Replace_To: "(づ｡◕‿‿◕｡)づ"
+    - What_To_Replace: ":heart:"
+      Replace_To: "❤"
+    - What_To_Replace: ":star:"
+      Replace_To: "⭐"
+    - What_To_Replace: ":arrow:"
+      Replace_To: "➜"
+    - What_To_Replace: ":java:"
+      Replace_To: "☕"
+    - What_To_Replace: ":table_flip:"
+      Replace_To: "(╯°□°）╯︵ ┻━┻"
 
   Cooldown:
     # -------------------------------------------------------------------------------------------------
@@ -216,14 +235,12 @@ Chat:
     Inactive_Cancel: "1 minute"
 
     Questions:
-      - Question: "&7[?] &fWhat is the answer to the life, the universe and everything? &7[?]"
+      - Question: "{actionbar}&7[?] &fWhat is the answer to the life, the universe and everything? &7[?]"
         Answer: "42"
-      - Question: "&7[?] &fMake up the word 'E__c' &7[?]"
+      - Question: "{chat}Multi-line message here\n&7[?] &fMake up the word 'E__c' &7[?]\nHello, I am AdoNikeOFFICE."
         Answer: "Epic"
-      - Question: "&7[?] &fName of the Minecraft creator? &7[?]"
+      - Question: "{title}&fName of|&athe Minecraft creator?"
         Answer: "Notch"
-      - Question: "&7[?] &fPut the word together. 'RDIT' &7[?]"
-        Answer: "Dirt"
 
 Command:
   Reload:

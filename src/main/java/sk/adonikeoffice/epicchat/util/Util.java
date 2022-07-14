@@ -9,6 +9,7 @@ import org.mineacademy.fo.Common;
 import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.settings.Settings;
+import sk.adonikeoffice.epicchat.task.QuestionTask;
 
 public final class Util {
 
@@ -19,18 +20,34 @@ public final class Util {
 	@Setter
 	private int lastMessageTime = 0;
 
-	public static void sendType(final Player player, String message) {
+	public static void sendType(final Player player, String message, final boolean runnable) {
 		message = Variables.replace(message, player);
 
 		final String actionBarType = MessageType.ACTIONBAR.getType();
 		final String chatType = MessageType.CHAT.getType();
 		final String titleType = MessageType.TITLE.getType();
 
-		if (message.startsWith(actionBarType))
-			Remain.sendActionBar(player, Settings.PLUGIN_PREFIX + message.replace(actionBarType, ""));
-		else if (message.startsWith(chatType))
+		if (message.startsWith(actionBarType)) {
+			final String replacedActionbarMessage = Settings.PLUGIN_PREFIX + " " + message.replace(actionBarType, "");
+
+			if (runnable) {
+				Common.runTimerAsync(20, () -> {
+					if (QuestionTask.questionIsRunning())
+						Remain.sendActionBar(player, replacedActionbarMessage);
+				});
+
+				QuestionTask.breakCycle = true;
+			} else
+				Remain.sendActionBar(player, replacedActionbarMessage);
+		} else if (message.startsWith(chatType)) {
+			if (runnable)
+				QuestionTask.breakCycle = true;
+
 			Common.tellLater(5, player, message.replace(chatType, ""));
-		else if (message.startsWith(titleType)) {
+		} else if (message.startsWith(titleType)) {
+			if (runnable)
+				QuestionTask.breakCycle = true;
+
 			final String[] split = message.split("\\|");
 
 			if (split.length == 2)

@@ -9,12 +9,16 @@ import org.mineacademy.fo.TimeUtil;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.data.QuestionData;
 import sk.adonikeoffice.epicchat.settings.Settings;
+import sk.adonikeoffice.epicchat.util.Util;
 
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Question;
 
 public final class QuestionTask extends BukkitRunnable {
 	@Getter
 	public static QuestionData question = null;
+
+	@Getter
+	public static boolean breakCycle = false;
 
 	@Getter
 	public static final long timeTicks = TimeUtil.currentTimeTicks();
@@ -33,7 +37,10 @@ public final class QuestionTask extends BukkitRunnable {
 		Common.runTimerAsync(20, () -> {
 			for (final Player player : Remain.getOnlinePlayers())
 				if (questionIsRunning())
-					Remain.sendActionBar(player, question.getQuestion());
+					if (breakCycle)
+						return;
+					else
+						Util.sendType(player, question.getQuestion(), true);
 
 			if ((getTimeTicks() - TimeUtil.currentTimeTicks()) <= -Question.INACTIVE_CANCEL.getTimeTicks()) {
 				if (questionIsRunning())

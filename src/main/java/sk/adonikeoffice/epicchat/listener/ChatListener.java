@@ -69,7 +69,7 @@ public final class ChatListener implements Listener {
 							"time_plural", Common.plural(time, "second")
 					);
 
-					Util.sendType(player, replacedMessage);
+					Util.sendType(player, replacedMessage, false);
 					return;
 				}
 
@@ -111,7 +111,7 @@ public final class ChatListener implements Listener {
 
 					message = message.replace(targetName, Mention.COLOR + "@" + targetName + (messageColor != null ? messageColor : "&f"));
 
-					Util.sendType(target, Mention.MESSAGE.replace("{target_name}", player.getName()));
+					Util.sendType(target, Mention.MESSAGE.replace("{target_name}", player.getName()), false);
 					Mention.SOUND.play(target);
 				}
 			}
@@ -123,7 +123,7 @@ public final class ChatListener implements Listener {
 						"1", QuestionTask.getQuestion().getAnswer()
 				);
 
-				Common.runLater(1, () -> {
+				Common.runLater(2, () -> {
 					Common.broadcast(replacedMessage);
 
 					PlayerData.findPlayer(player).increaseReactedTimes();
@@ -169,6 +169,7 @@ public final class ChatListener implements Listener {
 		hoverMessages = PlaceholderAPI.setPlaceholders(player, hoverMessages);
 
 		chatComponent.onHover(hoverMessages);
+		chatComponent.onClickSuggestCmd(HOVER_CLICK_COMMAND.replace("{0}", player.getName()));
 
 		for (final Player online : Remain.getOnlinePlayers())
 			chatComponent.send(online);
@@ -195,7 +196,7 @@ public final class ChatListener implements Listener {
 	private boolean isMuted(final Player player) {
 		if (Common.doesPluginExist("AdvancedBan") && PunishmentManager.get().isMuted(UUIDManager.get().getUUID(player.getName())))
 			return true;
-		
+
 		return HookManager.isMuted(player);
 	}
 

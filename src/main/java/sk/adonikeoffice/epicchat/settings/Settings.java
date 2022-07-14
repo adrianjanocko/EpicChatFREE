@@ -29,6 +29,7 @@ public final class Settings extends SimpleSettings {
 		public static CompChatColor MESSAGE_COLOR;
 		public static Set<GroupData> GROUP_FORMAT;
 		public static List<String> HOVER;
+		public static String HOVER_CLICK_COMMAND;
 		public static Set<EmojiData> EMOJIS;
 
 		private static void init() {
@@ -43,6 +44,7 @@ public final class Settings extends SimpleSettings {
 			MESSAGE_COLOR = get("Message_Color", CompChatColor.class);
 			GROUP_FORMAT = getSet("Group_Format", GroupData.class);
 			HOVER = getStringList("Hover");
+			HOVER_CLICK_COMMAND = getString("Hover_Click_Command");
 			EMOJIS = getSet("Emojis", EmojiData.class);
 		}
 
