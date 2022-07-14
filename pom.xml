@@ -92,13 +92,6 @@
             <artifactId>Foundation</artifactId>
             <version>${foundation.version}</version>
         </dependency>
-        <dependency>
-            <groupId>me.leoko.advancedban</groupId>
-            <artifactId>AdvancedBan</artifactId>
-            <version>2.1.7</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/adoni/Desktop/Epic Chat/jar_dependency/AdvancedBan-2.1.7.jar</systemPath>
-        </dependency>
     </dependencies>
 
     <!-- DO NOT EDIT unless instructed to do so or you know what you're doing. -->

@@ -9,6 +9,9 @@ api-version: 1.13
 libraries:
   - org.openjdk.nashorn:nashorn-core:15.3
   - net.dv8tion:JDA:5.0.0-alpha.13
+
+softdepend: [ AuthMe, BanManager, AdvancedBan, BungeeChatAPI, CMI, DiscordSRV, Factions, Feudal, ItemsAdder, Essentials, LegacyFactions, Lands, LuckPerms, Multiverse-Core, MVdWPlaceholderAPI, MythicMobs, mcMMO, Nicky, PlaceholderAPI, ProtocolLib, SimpleClans, Towny, TownyChat, Vault, WorldEdit ]
+
 #
 # The commands are built at runtime, so you can change them easily within the settings.
 # Do not change anything in here, you will break the plugin and get no support.

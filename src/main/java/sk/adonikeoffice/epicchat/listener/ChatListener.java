@@ -1,7 +1,6 @@
 package sk.adonikeoffice.epicchat.listener;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import me.leoko.advancedban.manager.PunishmentManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.bukkit.entity.Player;
@@ -82,7 +81,7 @@ public final class ChatListener implements Listener {
 			return;
 		}
 
-		if (isMuted(player)) {
+		if (HookManager.isMuted(player)) {
 			Common.tell(player, Message.MUTED);
 
 			return;
@@ -189,10 +188,6 @@ public final class ChatListener implements Listener {
 				channel.sendMessage(formattedMessage).queue();
 			}
 		}
-	}
-
-	private boolean isMuted(final Player player) {
-		return HookManager.isMuted(player) || Common.doesPluginExist("AdvancedBan") && PunishmentManager.get().isMuted(player.getUniqueId().toString());
 	}
 
 }
