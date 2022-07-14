@@ -92,6 +92,11 @@
             <artifactId>Foundation</artifactId>
             <version>${foundation.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.DevLeoko</groupId>
+            <artifactId>AdvancedBan</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
 
     <!-- DO NOT EDIT unless instructed to do so or you know what you're doing. -->
