@@ -58,9 +58,13 @@ FROM THE AUTHOR
 --
 ![image](https://user-images.githubusercontent.com/65062119/178567049-9f02be47-bfcd-4b9f-ac1e-b5c410eeb35b.png)
 
-![image](https://user-images.githubusercontent.com/65062119/178835569-3d817634-3781-463d-8cc8-6777d9441d38.png)
+![image](https://user-images.githubusercontent.com/65062119/179062884-a81ddd6c-b232-48a1-85e0-8e16e29a978c.png)
 --
 ![image](https://user-images.githubusercontent.com/65062119/178835622-2befe053-2d82-4661-ab5f-119bd7c3a47a.png)
+
+![image](https://user-images.githubusercontent.com/65062119/179062916-bd4f5672-5d9d-4ab5-8838-3957ffc910ce.png)
+--
+![image](https://user-images.githubusercontent.com/65062119/179062997-f0ed7b5a-e0e7-4e7e-a9d2-9cff1c56d3a3.png)
 
 FROM THE CUSTOMERS
 
