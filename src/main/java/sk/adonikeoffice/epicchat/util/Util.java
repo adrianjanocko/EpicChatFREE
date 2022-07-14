@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.Remain;
@@ -43,7 +44,13 @@ public final class Util {
 			if (runnable)
 				QuestionTask.breakCycle = true;
 
-			Common.tellLater(5, player, message.replace(chatType, ""));
+			if (message.startsWith("<center>")) {
+				message = message.replace("<center>", "");
+
+				message = ChatUtil.center(message);
+			}
+
+			Common.tellNoPrefix(player, message.replace(chatType, ""));
 		} else if (message.startsWith(titleType)) {
 			if (runnable)
 				QuestionTask.breakCycle = true;

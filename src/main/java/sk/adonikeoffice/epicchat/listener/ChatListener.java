@@ -127,6 +127,9 @@ public final class ChatListener implements Listener {
 					Common.broadcast(replacedMessage);
 
 					PlayerData.findPlayer(player).increaseReactedTimes();
+
+					for (final String reward : Question.REWARDS)
+						Common.dispatchCommand(player, reward);
 				});
 
 				QuestionTask.stopQuestion();

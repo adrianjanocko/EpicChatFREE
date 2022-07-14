@@ -225,7 +225,7 @@ Chat:
     Enabled: true
 
     # -------------------------------------------------------------------------------------------------
-    # What's the time for repeating the question?
+    # What's the repeat time to send the random question?
     # -------------------------------------------------------------------------------------------------
     Repeat_Every: "10 minutes"
 
@@ -237,10 +237,46 @@ Chat:
     Questions:
       - Question: "{actionbar}&7[?] &fWhat is the answer to the life, the universe and everything? &7[?]"
         Answer: "42"
-      - Question: "{chat}Multi-line message here\n&7[?] &fMake up the word 'E__c' &7[?]\nHello, I am AdoNikeOFFICE."
+      - Question: "{chat}Multi-line message here\n<center>&7[?] &fMake up the word 'E__c' &7[?]\nHello, I am AdoNikeOFFICE."
         Answer: "Epic"
       - Question: "{title}&fName of|&athe Minecraft creator?"
         Answer: "Notch"
+
+    Rewards:
+      - "gamemode creative {player}"
+      - "give {player} diamond"
+
+  Announcement:
+    # -------------------------------------------------------------------------------------------------
+    # Do you want to enable this feature?
+    # -------------------------------------------------------------------------------------------------
+    Enabled: true
+
+    # -------------------------------------------------------------------------------------------------
+    # What's the repeat time to send the random announcement?
+    # -------------------------------------------------------------------------------------------------
+    Repeat_Every: "15 minutes"
+
+    Announcements:
+      - Sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+        Permission: "none"
+        Chat_Message:
+          - " "
+          - "<center>&b| &3ANNOUNCEMENT &b|"
+          - " "
+          - "<center>&7This is the example announcement"
+          - "<center>&7that you can send to your players."
+          - " "
+      - Sound: "LEVEL_UP"
+        Permission: "chat.announcement"
+        Chat_Message:
+          - " "
+          - "<center>&e| &6ANNOUNCEMENT &e|"
+          - " "
+          - "<center>&7This is the example announcement"
+          - "<center>&7that you can send to the players"
+          - "<center>&7with the permission 'chat.announcement'."
+          - " "
 
 Command:
   Reload:

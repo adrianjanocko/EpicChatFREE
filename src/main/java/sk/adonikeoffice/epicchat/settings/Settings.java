@@ -4,6 +4,7 @@ import org.mineacademy.fo.model.SimpleTime;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.CompSound;
 import org.mineacademy.fo.settings.SimpleSettings;
+import sk.adonikeoffice.epicchat.data.AnnouncementData;
 import sk.adonikeoffice.epicchat.data.EmojiData;
 import sk.adonikeoffice.epicchat.data.GroupData;
 import sk.adonikeoffice.epicchat.data.QuestionData;
@@ -130,6 +131,7 @@ public final class Settings extends SimpleSettings {
 			public static SimpleTime REPEAT_EVERY;
 			public static SimpleTime INACTIVE_CANCEL;
 			public static Set<QuestionData> QUESTIONS;
+			public static Set<String> REWARDS;
 
 			private static void init() {
 				setPathPrefix("Chat.Question");
@@ -137,6 +139,22 @@ public final class Settings extends SimpleSettings {
 				REPEAT_EVERY = getTime("Repeat_Every");
 				INACTIVE_CANCEL = getTime("Inactive_Cancel");
 				QUESTIONS = getSet("Questions", QuestionData.class);
+				REWARDS = getSet("Rewards", String.class);
+			}
+
+		}
+
+		public static class Announcement {
+
+			public static Boolean ENABLED;
+			public static SimpleTime REPEAT_EVERY;
+			public static Set<AnnouncementData> ANNOUNCEMENTS;
+
+			private static void init() {
+				setPathPrefix("Chat.Announcement");
+				ENABLED = getBoolean("Enabled");
+				REPEAT_EVERY = getTime("Repeat_Every");
+				ANNOUNCEMENTS = getSet("Announcements", AnnouncementData.class);
 			}
 
 		}

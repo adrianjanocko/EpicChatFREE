@@ -13,6 +13,7 @@ import sk.adonikeoffice.epicchat.command.ReloadCommand;
 import sk.adonikeoffice.epicchat.data.PlayerData;
 import sk.adonikeoffice.epicchat.listener.ChatListener;
 import sk.adonikeoffice.epicchat.listener.DiscordListener;
+import sk.adonikeoffice.epicchat.task.AnnouncementTask;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
 
 import javax.security.auth.login.LoginException;
@@ -97,6 +98,9 @@ public class EpicChatPlugin extends SimplePlugin {
 
 		if (Chat.Question.ENABLED)
 			Common.runTimerAsync(Chat.Question.REPEAT_EVERY.getTimeTicks(), new QuestionTask());
+
+		if (Chat.Announcement.ENABLED)
+			Common.runTimerAsync(Chat.Announcement.REPEAT_EVERY.getTimeTicks(), new AnnouncementTask());
 
 		HookManager.addPlaceholder("question_answers", (target) -> String.valueOf(PlayerData.findPlayer(target).getReactedTimes()));
 	}
