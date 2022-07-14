@@ -253,7 +253,7 @@ Message:
   # -------------------------------------------------------------------------------------------------
   # What's the message, when player is muted?
   #
-  # This message supports: [Essentials, CMI, BanManager, AdvancedBans & LiteBans]
+  # This message supports: [Essentials, CMI, BanManager & LiteBans]
   # -------------------------------------------------------------------------------------------------
   Muted: "You can't use the chat, while you are muted."
 
