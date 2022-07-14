@@ -44,7 +44,8 @@ public final class QuestionTask extends BukkitRunnable {
 
 			if ((getTimeTicks() - TimeUtil.currentTimeTicks()) <= -Question.INACTIVE_CANCEL.getTimeTicks()) {
 				if (questionIsRunning())
-					Common.broadcast(Settings.Message.Question.INACTIVE_CANCEL);
+					for (final Player player : Remain.getOnlinePlayers())
+						Common.tell(player, Settings.Message.Question.INACTIVE_CANCEL);
 
 				stopQuestion();
 			}
