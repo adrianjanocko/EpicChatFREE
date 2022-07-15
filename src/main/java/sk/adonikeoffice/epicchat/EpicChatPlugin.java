@@ -8,6 +8,7 @@ import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.MinecraftVersion;
 import org.mineacademy.fo.model.HookManager;
+import org.mineacademy.fo.model.SimpleTime;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
 import sk.adonikeoffice.epicchat.data.PlayerData;
@@ -96,13 +97,14 @@ public class EpicChatPlugin extends SimplePlugin {
 		if (Chat.ENABLED)
 			this.registerEvents(new ChatListener());
 
-		if (Chat.Question.ENABLED)
-			Common.runTimerAsync(Chat.Question.REPEAT_EVERY.getTimeTicks(), new QuestionTask());
+		if (Chat.Question.ENABLED) {
+			Common.runTimerAsync(SimpleTime.from("1 minute").getTimeTicks(), Chat.Question.REPEAT_EVERY.getTimeTicks(), new QuestionTask());
+
+			HookManager.addPlaceholder("question_answers", (target) -> String.valueOf(PlayerData.findPlayer(target).getReactedTimes()));
+		}
 
 		if (Chat.Announcement.ENABLED)
-			Common.runTimerAsync(Chat.Announcement.REPEAT_EVERY.getTimeTicks(), new AnnouncementTask());
-
-		HookManager.addPlaceholder("question_answers", (target) -> String.valueOf(PlayerData.findPlayer(target).getReactedTimes()));
+			Common.runTimerAsync(SimpleTime.from("1 minute").getTimeTicks(), Chat.Announcement.REPEAT_EVERY.getTimeTicks(), new AnnouncementTask());
 	}
 
 	@Override

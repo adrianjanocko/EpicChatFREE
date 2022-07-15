@@ -14,6 +14,7 @@ import sk.adonikeoffice.epicchat.util.Util;
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Question;
 
 public final class QuestionTask extends BukkitRunnable {
+	
 	@Getter
 	public static QuestionData question = null;
 

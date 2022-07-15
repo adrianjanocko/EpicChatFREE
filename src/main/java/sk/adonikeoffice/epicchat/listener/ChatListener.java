@@ -77,6 +77,28 @@ public final class ChatListener implements Listener {
 			}
 		}
 
+		if (Chat.Question.ENABLED) {
+			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(QuestionTask.getQuestion().getAnswer().toLowerCase())) {
+				final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
+						"0", player.getName(),
+						"1", QuestionTask.getQuestion().getAnswer()
+				);
+
+				Common.runLater(2, () -> {
+					Common.broadcast(replacedMessage);
+
+					PlayerData.findPlayer(player).increaseReactedTimes();
+
+					for (final String reward : Question.REWARDS)
+						Common.dispatchCommand(player, reward);
+				});
+
+				QuestionTask.stopQuestion();
+			}
+
+			return;
+		}
+
 		if (!HookManager.isLogged(player)) {
 			Common.tell(player, Message.NOT_LOGGED);
 
@@ -115,26 +137,6 @@ public final class ChatListener implements Listener {
 					Mention.SOUND.play(target);
 				}
 			}
-
-		if (Chat.Question.ENABLED) {
-			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(QuestionTask.getQuestion().getAnswer().toLowerCase())) {
-				final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
-						"0", player.getName(),
-						"1", QuestionTask.getQuestion().getAnswer()
-				);
-
-				Common.runLater(2, () -> {
-					Common.broadcast(replacedMessage);
-
-					PlayerData.findPlayer(player).increaseReactedTimes();
-
-					for (final String reward : Question.REWARDS)
-						Common.dispatchCommand(player, reward);
-				});
-
-				QuestionTask.stopQuestion();
-			}
-		}
 
 		for (final EmojiData emoji : EMOJIS) {
 			final String emojiToReplace = emoji.getWhatToReplace();
