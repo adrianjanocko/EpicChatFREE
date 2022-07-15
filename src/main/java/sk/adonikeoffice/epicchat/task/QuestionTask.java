@@ -14,7 +14,7 @@ import sk.adonikeoffice.epicchat.util.Util;
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Question;
 
 public final class QuestionTask extends BukkitRunnable {
-	
+
 	@Getter
 	public static QuestionData question = null;
 
@@ -35,22 +35,20 @@ public final class QuestionTask extends BukkitRunnable {
 
 		question = RandomUtil.nextItem(Question.QUESTIONS);
 
-		Common.runTimerAsync(20, () -> {
-			for (final Player player : Remain.getOnlinePlayers())
-				if (questionIsRunning())
-					if (breakCycle)
-						return;
-					else
-						Util.sendType(player, question.getQuestion(), true);
+		for (final Player player : Remain.getOnlinePlayers())
+			if (questionIsRunning())
+				if (breakCycle)
+					return;
+				else
+					Util.sendType(player, question.getQuestion(), true);
 
-			if ((getTimeTicks() - TimeUtil.currentTimeTicks()) <= -Question.INACTIVE_CANCEL.getTimeTicks()) {
-				if (questionIsRunning())
-					for (final Player player : Remain.getOnlinePlayers())
-						Common.tell(player, Settings.Message.Question.INACTIVE_CANCEL);
+		if ((getTimeTicks() - TimeUtil.currentTimeTicks()) <= -Question.INACTIVE_CANCEL.getTimeTicks()) {
+			if (questionIsRunning())
+				for (final Player player : Remain.getOnlinePlayers())
+					Common.tell(player, Settings.Message.Question.INACTIVE_CANCEL);
 
-				stopQuestion();
-			}
-		});
+			stopQuestion();
+		}
 	}
 
 	public static boolean questionIsRunning() {
