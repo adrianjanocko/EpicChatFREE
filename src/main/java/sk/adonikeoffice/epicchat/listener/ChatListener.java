@@ -94,9 +94,9 @@ public final class ChatListener implements Listener {
 				});
 
 				QuestionTask.stopQuestion();
-			}
 
-			return;
+				return;
+			}
 		}
 
 		if (!HookManager.isLogged(player)) {
