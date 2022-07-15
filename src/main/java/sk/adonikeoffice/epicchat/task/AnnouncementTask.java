@@ -25,16 +25,16 @@ public class AnnouncementTask extends BukkitRunnable {
 			final boolean has = Util.hasPermission(player, announcement.getPermission());
 
 			if (has) {
-				final List<String> chatMessage = announcement.getChatMessage();
+				final List<String> chatMessages = announcement.getChatMessage();
 
-				for (String message : chatMessage) {
-					if (message.startsWith("<center>")) {
-						message = message.replace("<center>", "");
+				for (String chatMessage : chatMessages) {
+					if (chatMessage.startsWith("<center>")) {
+						chatMessage = chatMessage.replace("<center>", "");
 
-						message = ChatUtil.center(message);
+						chatMessage = ChatUtil.center(chatMessage);
 					}
 
-					Common.tellNoPrefix(player, message);
+					Common.tellNoPrefix(player, chatMessage);
 				}
 
 				announcement.getSound().play(player);

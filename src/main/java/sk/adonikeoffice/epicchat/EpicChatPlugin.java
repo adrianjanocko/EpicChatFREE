@@ -104,7 +104,7 @@ public class EpicChatPlugin extends SimplePlugin {
 		}
 
 		if (Chat.Announcement.ENABLED)
-			Common.runTimerAsync(SimpleTime.from("1 minute").getTimeTicks(), Chat.Announcement.REPEAT_EVERY.getTimeTicks(), new AnnouncementTask());
+			Common.runTimerAsync(SimpleTime.from("3 minute").getTimeTicks(), Chat.Announcement.REPEAT_EVERY.getTimeTicks(), new AnnouncementTask());
 	}
 
 	@Override
