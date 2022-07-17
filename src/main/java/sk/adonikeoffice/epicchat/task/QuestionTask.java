@@ -36,7 +36,9 @@ public class QuestionTask extends BukkitRunnable {
 			time = 0;
 		}
 
-		time++;
+		for (final Player player : Remain.getOnlinePlayers())
+			if (player.isOnline())
+				time++;
 	}
 
 	public static boolean questionIsRunning() {
