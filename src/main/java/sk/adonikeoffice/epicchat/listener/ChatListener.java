@@ -49,7 +49,6 @@ public final class ChatListener implements Listener {
 		final Player player = event.getPlayer();
 		String message = event.getMessage();
 
-		// FULLY FUNCTIONAL
 		timeCheck:
 		{
 			if (Cooldown.ENABLED) {
@@ -77,6 +76,32 @@ public final class ChatListener implements Listener {
 			}
 		}
 
+		// ================================================================
+		// CHECKERS (RETURN METHODS)
+		// ================================================================
+
+		if (!HookManager.isLogged(player)) {
+			Common.tell(player, Message.NOT_LOGGED);
+
+			return;
+		}
+
+		if (this.isMuted(player)) {
+			Common.tell(player, Message.MUTED);
+
+			return;
+		}
+
+		if (!Util.hasPermission(player, Chat.PERMISSION)) {
+			Common.tell(player, Message.NO_PERMISSION.replace("{0}", Chat.PERMISSION));
+
+			return;
+		}
+
+		// ================================================================
+		// /CHECKERS (RETURN METHODS)
+		// ================================================================
+
 		if (Chat.Question.ENABLED) {
 			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(QuestionTask.getQuestion().getAnswer().toLowerCase())) {
 				final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
@@ -99,25 +124,6 @@ public final class ChatListener implements Listener {
 			}
 		}
 
-		if (!HookManager.isLogged(player)) {
-			Common.tell(player, Message.NOT_LOGGED);
-
-			return;
-		}
-
-		if (this.isMuted(player)) {
-			Common.tell(player, Message.MUTED);
-
-			return;
-		}
-
-		if (!Chat.PERMISSION.equals("none") && !Util.hasPermission(player, Chat.PERMISSION)) {
-			Common.tell(player, Message.NO_PERMISSION.replace("{0}", Chat.PERMISSION));
-
-			return;
-		}
-
-		// FULLY FUNCTIONAL
 		if (Mention.ENABLED)
 			for (final Player target : Remain.getOnlinePlayers()) {
 				final String targetName = target.getName();
@@ -131,7 +137,12 @@ public final class ChatListener implements Listener {
 							if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
 								messageColor = group.getMessageColor();
 
-					message = message.replace(targetName, Mention.COLOR + "@" + targetName + (messageColor != null ? messageColor : "&f"));
+					final String mentionColor = Mention.COLOR;
+
+					if (mentionColor.startsWith("&") || mentionColor.startsWith("#") || mentionColor.startsWith("{#"))
+						message = message.replace(targetName, Mention.COLOR + targetName + (messageColor != null ? messageColor : "&f"));
+					else
+						Common.log("Mention Color in the settings.yml must start with a color. (&, #, {#)");
 
 					Util.sendType(target, Mention.MESSAGE.replace("{target_name}", player.getName()), false);
 					Mention.SOUND.play(target);
@@ -173,7 +184,9 @@ public final class ChatListener implements Listener {
 		final String formattedMessage = Replacer.replaceArray(format, "message", hasColorPermission ? messageColor + message : messageColor + Common.stripColors(message));
 
 		this.sendMessage(player, formattedMessage);
-		this.sendDiscordMessage(player, message);
+
+		if (Discord.isEnabled())
+			this.sendDiscordMessage(player, message);
 	}
 
 	private void sendMessage(final Player player, final String message) {
@@ -193,17 +206,15 @@ public final class ChatListener implements Listener {
 	}
 
 	private void sendDiscordMessage(final Player player, final String message) {
-		if (Discord.isEnabled()) {
-			final JDA jda = EpicChatPlugin.getJda();
-			final TextChannel channel = jda.getTextChannelById(Discord.CHAT_CHANNEL_ID);
+		final JDA jda = EpicChatPlugin.getJda();
+		final TextChannel channel = jda.getTextChannelById(Discord.CHAT_CHANNEL_ID);
 
-			if (channel != null) {
-				final String formattedMessage = Replacer.replaceArray(Variables.replace(Discord.DISCORD_FORMAT, player),
-						"message", Common.stripColors(message)
-				);
+		if (channel != null) {
+			final String formattedMessage = Replacer.replaceArray(Variables.replace(Discord.DISCORD_FORMAT, player),
+					"message", Common.stripColors(message)
+			);
 
-				channel.sendMessage(formattedMessage).queue();
-			}
+			channel.sendMessage(formattedMessage).queue();
 		}
 	}
 

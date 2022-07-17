@@ -66,14 +66,14 @@ public final class Settings extends SimpleSettings {
 
 			public static Boolean ENABLED;
 			public static String MESSAGE;
-			public static CompChatColor COLOR;
+			public static String COLOR;
 			public static CompSound SOUND;
 
 			private static void init() {
 				setPathPrefix("Chat.Mention");
 				ENABLED = getBoolean("Enabled");
 				MESSAGE = getString("Message");
-				COLOR = get("Color", CompChatColor.class);
+				COLOR = getString("Color");
 				SOUND = get("Sound", CompSound.class);
 			}
 

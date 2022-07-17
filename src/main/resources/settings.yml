@@ -174,12 +174,12 @@ Chat:
     # -------------------------------------------------------------------------------------------------
     # What's the message when player mentions someone?
     # -------------------------------------------------------------------------------------------------
-    Message: "{actionbar}&7You were mentioned by &f{target_name}&7."
+    Message: "{title}&a{target_name}|&7Mentioned you!"
 
     # -------------------------------------------------------------------------------------------------
-    # What's the color of mentioned name in the chat message?
+    # What's the color "format" of mentioned name in the chat message?
     # -------------------------------------------------------------------------------------------------
-    Color: "&a"
+    Color: "&f@"
 
     # -------------------------------------------------------------------------------------------------
     # What's the sound played to the mentioned player?
@@ -250,8 +250,6 @@ Chat:
         Answer: "42"
       - Question: "{chat}Multi-line message here\n<center>&7[?] &fMake up the word 'E__c' &7[?]\nHello, I am AdoNikeOFFICE."
         Answer: "Epic"
-      - Question: "{title}&fName of|&athe Minecraft creator?"
-        Answer: "Notch"
 
     Rewards:
       - "gamemode creative {player}"

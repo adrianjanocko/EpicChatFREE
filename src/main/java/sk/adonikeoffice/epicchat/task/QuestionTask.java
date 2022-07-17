@@ -18,27 +18,29 @@ public class QuestionTask extends BukkitRunnable {
 	@Getter
 	public static boolean breakCycle = false;
 
-	private static int time;
+	private static int questionTime;
+
+	private static int inactiveTime;
 
 	@Override
 	public void run() {
-		if (time == Settings.Chat.Question.REPEAT_EVERY.getTimeSeconds()) {
+		if (questionTime == Settings.Chat.Question.REPEAT_EVERY.getTimeSeconds()) {
 			question = RandomUtil.nextItem(Settings.Chat.Question.QUESTIONS);
 
 			for (final Player player : Remain.getOnlinePlayers())
 				Util.sendType(player, question.getQuestion(), true);
 		}
 
-		if (time >= Settings.Chat.Question.INACTIVE_CANCEL.getTimeSeconds()) {
+		if (questionIsRunning())
+			inactiveTime++;
+
+		if (inactiveTime >= Settings.Chat.Question.INACTIVE_CANCEL.getTimeSeconds())
 			for (final Player player : Remain.getOnlinePlayers())
 				stopQuestion(player);
 
-			time = 0;
-		}
-
 		for (final Player player : Remain.getOnlinePlayers())
 			if (player.isOnline())
-				time++;
+				questionTime++;
 	}
 
 	public static boolean questionIsRunning() {
@@ -48,7 +50,8 @@ public class QuestionTask extends BukkitRunnable {
 	public static void stopQuestion() {
 		question = null;
 
-		time = 0;
+		questionTime = 0;
+		inactiveTime = 0;
 	}
 
 	public static void stopQuestion(final Player player) {
