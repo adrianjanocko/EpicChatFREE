@@ -138,13 +138,22 @@ public final class ChatListener implements Listener {
 				}
 			}
 
-		for (final EmojiData emoji : EMOJIS) {
-			final String emojiToReplace = emoji.getWhatToReplace();
-			final int thisIndex = message.indexOf(emojiToReplace);
+		if (Emoji.ENABLED)
+			for (final EmojiData emoji : Emoji.EMOJIS) {
+				final String emojiToReplace = emoji.getWhatToReplace();
+				final int thisIndex = message.indexOf(emojiToReplace);
 
-			if (thisIndex != -1)
-				message = message.replace(emojiToReplace, emoji.getReplaceTo());
-		}
+				if (thisIndex != -1) {
+					CompChatColor messageColor = Chat.MESSAGE_COLOR;
+
+					if (HookManager.isVaultLoaded())
+						for (final GroupData group : Chat.GROUP_FORMAT)
+							if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
+								messageColor = group.getMessageColor();
+
+					message = message.replace(emojiToReplace, Emoji.COLOR + emoji.getReplaceTo() + (messageColor != null ? messageColor : "&f"));
+				}
+			}
 
 		this.chat(player, message);
 	}

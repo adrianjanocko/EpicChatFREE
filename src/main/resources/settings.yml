@@ -105,27 +105,38 @@ Chat:
   #
   # Set this to "Emojis: []" to disable it.
   # -------------------------------------------------------------------------------------------------
-  Emojis:
-    - What_To_Replace: ":)"
-      Replace_To: "☺"
-    - What_To_Replace: "=)"
-      Replace_To: "☻"
-    - What_To_Replace: ":check_mark:"
-      Replace_To: "☑"
-    - What_To_Replace: ":x:"
-      Replace_To: "⊠"
-    - What_To_Replace: "o/"
-      Replace_To: "(づ｡◕‿‿◕｡)づ"
-    - What_To_Replace: ":heart:"
-      Replace_To: "❤"
-    - What_To_Replace: ":star:"
-      Replace_To: "⭐"
-    - What_To_Replace: ":arrow:"
-      Replace_To: "➜"
-    - What_To_Replace: ":java:"
-      Replace_To: "☕"
-    - What_To_Replace: ":table_flip:"
-      Replace_To: "(╯°□°）╯︵ ┻━┻"
+  Emoji:
+    # -------------------------------------------------------------------------------------------------
+    # Do you want to enable this feature?
+    # -------------------------------------------------------------------------------------------------
+    Enabled: true
+
+    # -------------------------------------------------------------------------------------------------
+    # What's the color of emoji in the chat message?
+    # -------------------------------------------------------------------------------------------------
+    Color: "&e"
+
+    Emojis:
+      - What_To_Replace: ":)"
+        Replace_To: "☺"
+      - What_To_Replace: "=)"
+        Replace_To: "☻"
+      - What_To_Replace: ":check_mark:"
+        Replace_To: "☑"
+      - What_To_Replace: ":x:"
+        Replace_To: "⊠"
+      - What_To_Replace: "o/"
+        Replace_To: "(づ｡◕‿‿◕｡)づ"
+      - What_To_Replace: ":heart:"
+        Replace_To: "❤"
+      - What_To_Replace: ":star:"
+        Replace_To: "⭐"
+      - What_To_Replace: ":arrow:"
+        Replace_To: "➜"
+      - What_To_Replace: ":java:"
+        Replace_To: "☕"
+      - What_To_Replace: ":table_flip:"
+        Replace_To: "(╯°□°）╯︵ ┻━┻"
 
   Cooldown:
     # -------------------------------------------------------------------------------------------------

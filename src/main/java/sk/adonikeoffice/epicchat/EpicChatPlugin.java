@@ -98,7 +98,7 @@ public class EpicChatPlugin extends SimplePlugin {
 			this.registerEvents(new ChatListener());
 
 		if (Chat.Question.ENABLED) {
-			Common.runTimerAsync(SimpleTime.from("1 minute").getTimeTicks(), Chat.Question.REPEAT_EVERY.getTimeTicks(), new QuestionTask());
+			Common.runTimerAsync(20, new QuestionTask());
 
 			HookManager.addPlaceholder("question_answers", (target) -> String.valueOf(PlayerData.findPlayer(target).getReactedTimes()));
 		}

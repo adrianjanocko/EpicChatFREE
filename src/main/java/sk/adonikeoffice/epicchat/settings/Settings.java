@@ -31,7 +31,6 @@ public final class Settings extends SimpleSettings {
 		public static Set<GroupData> GROUP_FORMAT;
 		public static List<String> HOVER;
 		public static String HOVER_CLICK_COMMAND;
-		public static Set<EmojiData> EMOJIS;
 
 		private static void init() {
 			setPathPrefix("Chat");
@@ -46,7 +45,21 @@ public final class Settings extends SimpleSettings {
 			GROUP_FORMAT = getSet("Group_Format", GroupData.class);
 			HOVER = getStringList("Hover");
 			HOVER_CLICK_COMMAND = getString("Hover_Click_Command");
-			EMOJIS = getSet("Emojis", EmojiData.class);
+		}
+
+		public static class Emoji {
+
+			public static Boolean ENABLED;
+			public static CompChatColor COLOR;
+			public static Set<EmojiData> EMOJIS;
+
+			private static void init() {
+				setPathPrefix("Chat.Emoji");
+				ENABLED = getBoolean("Enabled");
+				COLOR = get("Color", CompChatColor.class);
+				EMOJIS = getSet("Emojis", EmojiData.class);
+			}
+
 		}
 
 		public static class Mention {
