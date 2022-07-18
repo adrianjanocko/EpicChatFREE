@@ -5,6 +5,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.RandomUtil;
+import org.mineacademy.fo.remain.CompSound;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.data.AnnouncementData;
 import sk.adonikeoffice.epicchat.settings.Settings;
@@ -37,7 +38,10 @@ public class AnnouncementTask extends BukkitRunnable {
 					Common.tellNoPrefix(player, chatMessage);
 				}
 
-				announcement.getSound().play(player);
+				final CompSound sound = announcement.getSound() != null ? announcement.getSound() : null;
+
+				if (sound != null)
+					sound.play(player);
 			}
 		}
 	}

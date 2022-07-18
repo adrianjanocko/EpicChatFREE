@@ -250,6 +250,7 @@ Chat:
         Answer: "42"
       - Question: "{chat}Multi-line message here\n<center>&7[?] &fMake up the word 'E__c' &7[?]\nHello, I am AdoNikeOFFICE."
         Answer: "Epic"
+        Sound: SUCCESSFUL_HIT
 
     Rewards:
       - "gamemode creative {player}"
@@ -267,7 +268,7 @@ Chat:
     Repeat_Every: "15 minutes"
 
     Announcements:
-      - Sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+      - Sound: ENTITY_EXPERIENCE_ORB_PICKUP
         Permission: "none"
         Chat_Message:
           - " "
@@ -276,8 +277,7 @@ Chat:
           - "<center>&7This is the example announcement"
           - "<center>&7that you can send to your players."
           - " "
-      - Sound: "LEVEL_UP"
-        Permission: "chat.announcement"
+      - Permission: "chat.announcement"
         Chat_Message:
           - " "
           - "<center>&e| &6ANNOUNCEMENT &e|"

@@ -17,11 +17,13 @@ import org.mineacademy.fo.model.Replacer;
 import org.mineacademy.fo.model.SimpleComponent;
 import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.CompChatColor;
+import org.mineacademy.fo.remain.CompSound;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.EpicChatPlugin;
 import sk.adonikeoffice.epicchat.data.EmojiData;
 import sk.adonikeoffice.epicchat.data.GroupData;
 import sk.adonikeoffice.epicchat.data.PlayerData;
+import sk.adonikeoffice.epicchat.data.QuestionData;
 import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
 import sk.adonikeoffice.epicchat.util.Util;
@@ -103,10 +105,12 @@ public final class ChatListener implements Listener {
 		// ================================================================
 
 		if (Chat.Question.ENABLED) {
-			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(QuestionTask.getQuestion().getAnswer().toLowerCase())) {
+			final QuestionData question = QuestionTask.getQuestion();
+
+			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(question.getAnswer().toLowerCase())) {
 				final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
 						"0", player.getName(),
-						"1", QuestionTask.getQuestion().getAnswer()
+						"1", question.getAnswer()
 				);
 
 				Common.runLater(2, () -> {
@@ -116,6 +120,11 @@ public final class ChatListener implements Listener {
 
 					for (final String reward : Question.REWARDS)
 						Common.dispatchCommand(player, reward);
+
+					final CompSound sound = question.getSound() != null ? question.getSound() : null;
+
+					if (sound != null)
+						sound.play(player);
 				});
 
 				QuestionTask.stopQuestion();
