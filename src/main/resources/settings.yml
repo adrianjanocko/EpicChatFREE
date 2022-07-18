@@ -7,13 +7,15 @@
 #    5) Color codes are supported with '&', '§', '{#hex}' or #hex (Hex colors are only supported from 1.16+ Minecraft version).
 #    >  Examples: "&cHello."; "{#756D0B}Hello". For hex colors I recommend using https://htmlcolorcodes.com/.
 #    6) PlaceholderAPI and Built-in placeholders are available, see https://github.com/AdoNikeOFFICE/EpicChat/wiki/Placeholders.
+#    7) You can find Sounds there: https://github.com/kangarko/Foundation/blob/master/src/main/java/org/mineacademy/fo/remain/CompSound.java,
+#       some of them are not initialized yet, use the name of the Sound from the "...".
 #
 # !-----------------------------------------------------------------------------------------------!
 
 # -------------------------------------------------------------------------------------------------
 # This is the prefix before the messages.
 # -------------------------------------------------------------------------------------------------
-Prefix: "&4&lEpicChat &8//&7"
+Prefix: "&4&lEpicChat &8// &7"
 
 Chat:
   # -------------------------------------------------------------------------------------------------
@@ -158,7 +160,7 @@ Chat:
     # > {time} - shows time left
     # > {time_plural} - shows time left + second/seconds
     # -------------------------------------------------------------------------------------------------
-    Message: "{actionbar}You can write again in &f{time_plural}&7."
+    Message: "{actionbar}{prefix}You can write again in &f{time_plural}&7."
 
     # -------------------------------------------------------------------------------------------------
     # What's the time in seconds that player can write again?
@@ -246,9 +248,9 @@ Chat:
     Inactive_Cancel: "1 minute"
 
     Questions:
-      - Question: "{actionbar}&7[?] &fWhat is the answer to the life, the universe and everything? &7[?]"
+      - Question: "{actionbar}{prefix}&7[?] &fWhat is the answer to the life, the universe and everything? &7[?]"
         Answer: "42"
-      - Question: "{chat}Multi-line message here\n<center>&7[?] &fMake up the word 'E__c' &7[?]\nHello, I am AdoNikeOFFICE."
+      - Question: "{chat}{prefix}Multi-line message here\n<center>&7[?] &fMake up the word 'E__c' &7[?]\nHello, I am AdoNikeOFFICE."
         Answer: "Epic"
         Sound: SUCCESSFUL_HIT
 
@@ -268,7 +270,7 @@ Chat:
     Repeat_Every: "15 minutes"
 
     Announcements:
-      - Sound: ENTITY_EXPERIENCE_ORB_PICKUP
+      - Sound: CAT_HISS
         Permission: "none"
         Chat_Message:
           - " "
@@ -333,4 +335,4 @@ Message:
 # -------------------------------------------------------------------------------------------------
 # DO NOT EDIT. Otherwise it will corrupt your plugin installation!
 # -------------------------------------------------------------------------------------------------
-Version: 5
+Version: 6

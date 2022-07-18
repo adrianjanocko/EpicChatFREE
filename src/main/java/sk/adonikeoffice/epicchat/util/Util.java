@@ -24,12 +24,15 @@ public final class Util {
 	public static void sendType(final Player player, String message, final boolean runnable) {
 		message = Variables.replace(message, player);
 
+		if (message.contains("{prefix}"))
+			message = message.replace("{prefix}", Settings.PLUGIN_PREFIX);
+
 		final String actionBarType = MessageType.ACTIONBAR.getType();
 		final String chatType = MessageType.CHAT.getType();
 		final String titleType = MessageType.TITLE.getType();
 
 		if (message.startsWith(actionBarType)) {
-			final String replacedActionbarMessage = Settings.PLUGIN_PREFIX + " " + message.replace(actionBarType, "");
+			final String replacedActionbarMessage = message.replace(actionBarType, "");
 
 			if (runnable) {
 				Common.runTimerAsync(20, () -> {

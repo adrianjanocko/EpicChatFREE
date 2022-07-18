@@ -8,7 +8,6 @@ import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.MinecraftVersion;
 import org.mineacademy.fo.model.HookManager;
-import org.mineacademy.fo.model.SimpleTime;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import sk.adonikeoffice.epicchat.command.ReloadCommand;
 import sk.adonikeoffice.epicchat.data.PlayerData;
@@ -104,7 +103,7 @@ public class EpicChatPlugin extends SimplePlugin {
 		}
 
 		if (Chat.Announcement.ENABLED)
-			Common.runTimerAsync(SimpleTime.from("1 minute").getTimeTicks(), Chat.Announcement.REPEAT_EVERY.getTimeTicks(), new AnnouncementTask());
+			Common.runTimerAsync(20, new AnnouncementTask());
 	}
 
 	@Override

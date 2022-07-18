@@ -15,35 +15,45 @@ import java.util.List;
 
 public class AnnouncementTask extends BukkitRunnable {
 
+	private int time;
+
 	@Override
 	public void run() {
-		final AnnouncementData announcement = RandomUtil.nextItem(Settings.Chat.Announcement.ANNOUNCEMENTS);
 
-		for (final Player player : Remain.getOnlinePlayers()) {
-			if (!player.isOnline())
-				return;
+		if (this.time == Settings.Chat.Announcement.REPEAT_EVERY.getTimeSeconds()) {
+			final AnnouncementData announcement = RandomUtil.nextItem(Settings.Chat.Announcement.ANNOUNCEMENTS);
 
-			final boolean has = Util.hasPermission(player, announcement.getPermission());
+			for (final Player player : Remain.getOnlinePlayers()) {
+				final boolean has = Util.hasPermission(player, announcement.getPermission());
 
-			if (has) {
-				final List<String> chatMessages = announcement.getChatMessage();
+				if (has) {
+					final List<String> chatMessages = announcement.getChatMessage();
 
-				for (String chatMessage : chatMessages) {
-					if (chatMessage.startsWith("<center>")) {
-						chatMessage = chatMessage.replace("<center>", "");
+					for (String chatMessage : chatMessages) {
+						if (chatMessage.startsWith("<center>")) {
+							chatMessage = chatMessage.replace("<center>", "");
 
-						chatMessage = ChatUtil.center(chatMessage);
+							chatMessage = ChatUtil.center(chatMessage);
+						}
+
+						Common.tellNoPrefix(player, chatMessage);
 					}
 
-					Common.tellNoPrefix(player, chatMessage);
+					final CompSound sound = announcement.getSound() != null ? announcement.getSound() : null;
+
+					if (sound != null)
+						sound.play(player);
+
+					time = 0;
 				}
-
-				final CompSound sound = announcement.getSound() != null ? announcement.getSound() : null;
-
-				if (sound != null)
-					sound.play(player);
 			}
+
 		}
+
+		for (final Player player : Remain.getOnlinePlayers())
+			if (player.isOnline())
+				time++;
+
 	}
 
 }

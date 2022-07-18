@@ -16,7 +16,7 @@ public final class Settings extends SimpleSettings {
 
 	@Override
 	protected int getConfigVersion() {
-		return 5;
+		return 6;
 	}
 
 	public static class Chat {

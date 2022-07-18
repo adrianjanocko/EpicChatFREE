@@ -32,12 +32,12 @@ public final class ReloadCommand extends SimpleCommand {
 			final List<String> helpMessage = new ArrayList<>();
 
 			helpMessage.add("&8" + Common.chatLine());
-			helpMessage.add(Settings.PLUGIN_PREFIX + " Running EpicChatᵀᴹ &f" + SimplePlugin.getVersion());
-			helpMessage.add(Settings.PLUGIN_PREFIX + " Made by &fAdoNikeOFFICE &7in &4²⁰²²");
+			helpMessage.add(Settings.PLUGIN_PREFIX + "Running EpicChatᵀᴹ &f" + SimplePlugin.getVersion());
+			helpMessage.add(Settings.PLUGIN_PREFIX + "Made by &fAdoNikeOFFICE &7in &4²⁰²²");
 
 			if (hasAccess) {
 				helpMessage.add(" ");
-				helpMessage.add(Settings.PLUGIN_PREFIX + " &7Type &4/" + this.getCurrentLabel() + " reload &7to reload this plugin.");
+				helpMessage.add(Settings.PLUGIN_PREFIX + "&7Type &4/" + this.getCurrentLabel() + " reload &7to reload this plugin.");
 			}
 
 			helpMessage.add("&8" + Common.chatLine());
