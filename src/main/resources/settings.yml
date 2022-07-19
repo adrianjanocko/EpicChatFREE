@@ -80,20 +80,19 @@ Chat:
   # What's the shown message when player hovers on the chat format?
   #
   # Set this to "Hover: []" to disable it.
-  # !! Supports only PlaceholderAPI for now (In this section: built-in placeholders not supported + use %%, instead of {}) !!
   # -------------------------------------------------------------------------------------------------
   Hover:
-    - "&8• &f%player_name%'s &7Profile"
+    - "&8• &f{player_name}'s &7Profile"
     - " "
-    - " &2| &7First Joined &a%player_first_join_date%"
-    - " &2| &7Time Played &a%statistic_time_played:days%d %statistic_time_played:hours%h %statistic_time_played:minutes%m"
+    - " &2| &7First Joined &a{player_first_join_date}"
+    - " &2| &7Time Played &a{statistic_time_played:days}d {statistic_time_played:hours}h {statistic_time_played:minutes}m"
     - " "
-    - " &3| &7Kills &b%statistic_player_kills% &7kill(s)"
-    - " &3| &7Deaths &b%statistic_deaths% &7death(s)"
+    - " &3| &7Kills &b{statistic_player_kills} &7kill(s)"
+    - " &3| &7Deaths &b{statistic_deaths} &7death(s)"
     - " "
     - " &e> Click to send a message to this player"
     - " "
-    - " &8&oMessage sent on %localtime_time%"
+    - " &8&oMessage sent on {timestamp_short}"
 
   # -------------------------------------------------------------------------------------------------
   # What's the suggested message, when player clicks to the chat format?

@@ -1,6 +1,5 @@
 package sk.adonikeoffice.epicchat.listener;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import me.leoko.advancedban.manager.PunishmentManager;
 import me.leoko.advancedban.manager.UUIDManager;
 import net.dv8tion.jda.api.JDA;
@@ -28,6 +27,7 @@ import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
 import sk.adonikeoffice.epicchat.util.Util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat;
@@ -202,7 +202,7 @@ public final class ChatListener implements Listener {
 		final SimpleComponent chatComponent = SimpleComponent.of(message);
 
 		List<String> hoverMessages = Chat.HOVER;
-		hoverMessages = PlaceholderAPI.setPlaceholders(player, hoverMessages);
+		hoverMessages = this.replaceVariables(player, hoverMessages);
 
 		chatComponent.onHover(hoverMessages);
 		chatComponent.onClickSuggestCmd(HOVER_CLICK_COMMAND.replace("{0}", player.getName()));
@@ -232,6 +232,15 @@ public final class ChatListener implements Listener {
 			return true;
 
 		return HookManager.isMuted(player);
+	}
+
+	private List<String> replaceVariables(final Player player, final List<String> list) {
+		final List<String> replaced = new ArrayList<>();
+
+		for (final String item : list)
+			replaced.add(Variables.replace(item, player));
+
+		return replaced;
 	}
 
 }
