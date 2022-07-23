@@ -47,31 +47,32 @@ public final class ChatListener implements Listener {
 		final Player player = event.getPlayer();
 		String message = event.getMessage();
 
-		if (Cooldown.ENABLED)
+		if (Cooldown.ENABLED) {
 			timeCheck:
-					{
-						if (Util.hasPermission(player, Cooldown.PERMISSION))
-							break timeCheck;
+			{
+				if (Util.hasPermission(player, Cooldown.PERMISSION))
+					break timeCheck;
 
-						final long now = System.currentTimeMillis() / 1000;
-						final int lastMessageTime = Util.getInstance().getLastMessageTime();
-						final int messageDelay = Cooldown.DELAY;
+				final long now = System.currentTimeMillis() / 1000;
+				final int lastMessageTime = Util.getInstance().getLastMessageTime();
+				final int messageDelay = Cooldown.DELAY;
 
-						if ((now - lastMessageTime) < messageDelay) {
-							final long time = messageDelay - (now - lastMessageTime);
+				if ((now - lastMessageTime) < messageDelay) {
+					final long time = messageDelay - (now - lastMessageTime);
 
-							final String replacedMessage = Replacer.replaceArray(
-									Cooldown.MESSAGE,
-									"time", time,
-									"time_plural", Common.plural(time, "second")
-							);
+					final String replacedMessage = Replacer.replaceArray(
+							Cooldown.MESSAGE,
+							"time", time,
+							"time_plural", Common.plural(time, "second")
+					);
 
-							Util.sendType(player, replacedMessage, false);
-							return;
-						}
+					Util.sendType(player, replacedMessage, false);
+					return;
+				}
 
-						Util.getInstance().setLastMessageTime(Math.toIntExact(now));
-					}
+				Util.getInstance().setLastMessageTime(Math.toIntExact(now));
+			}
+		}
 
 		if (Util.canChat(player)) {
 			if (Chat.Question.ENABLED) {
