@@ -1,7 +1,5 @@
 package sk.adonikeoffice.epicchat.listener;
 
-import me.leoko.advancedban.manager.PunishmentManager;
-import me.leoko.advancedban.manager.UUIDManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.bukkit.entity.Player;
@@ -27,12 +25,10 @@ import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
 import sk.adonikeoffice.epicchat.util.Util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat;
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat.*;
-import static sk.adonikeoffice.epicchat.settings.Settings.Message;
 
 public final class ChatListener implements Listener {
 
@@ -51,131 +47,106 @@ public final class ChatListener implements Listener {
 		final Player player = event.getPlayer();
 		String message = event.getMessage();
 
-		timeCheck:
-		{
-			if (Cooldown.ENABLED) {
-				if (Util.hasPermission(player, Cooldown.PERMISSION))
-					break timeCheck;
+		if (Cooldown.ENABLED)
+			timeCheck:
+					{
+						if (Util.hasPermission(player, Cooldown.PERMISSION))
+							break timeCheck;
 
-				final long now = System.currentTimeMillis() / 1000;
-				final int lastMessageTime = Util.getInstance().getLastMessageTime();
-				final int messageDelay = Cooldown.DELAY;
+						final long now = System.currentTimeMillis() / 1000;
+						final int lastMessageTime = Util.getInstance().getLastMessageTime();
+						final int messageDelay = Cooldown.DELAY;
 
-				if ((now - lastMessageTime) < messageDelay) {
-					final long time = messageDelay - (now - lastMessageTime);
+						if ((now - lastMessageTime) < messageDelay) {
+							final long time = messageDelay - (now - lastMessageTime);
 
-					final String replacedMessage = Replacer.replaceArray(
-							Cooldown.MESSAGE,
-							"time", time,
-							"time_plural", Common.plural(time, "second")
+							final String replacedMessage = Replacer.replaceArray(
+									Cooldown.MESSAGE,
+									"time", time,
+									"time_plural", Common.plural(time, "second")
+							);
+
+							Util.sendType(player, replacedMessage, false);
+							return;
+						}
+
+						Util.getInstance().setLastMessageTime(Math.toIntExact(now));
+					}
+
+		if (Util.canChat(player)) {
+			if (Chat.Question.ENABLED) {
+				final QuestionData question = QuestionTask.getQuestion();
+
+				if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(question.getAnswer().toLowerCase())) {
+					final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
+							"0", player.getName(),
+							"1", question.getAnswer()
 					);
 
-					Util.sendType(player, replacedMessage, false);
+					Common.runLater(2, () -> {
+						Common.broadcast(replacedMessage);
+
+						PlayerData.findPlayer(player).increaseReactedTimes();
+
+						for (final String reward : Question.REWARDS)
+							Common.dispatchCommand(player, reward);
+
+						final CompSound sound = question.getSound() != null ? question.getSound() : null;
+
+						if (sound != null)
+							sound.play(player);
+					});
+
+					QuestionTask.stopQuestion();
+
 					return;
 				}
-
-				Util.getInstance().setLastMessageTime(Math.toIntExact(now));
 			}
-		}
 
-		// ================================================================
-		// CHECKERS (RETURN METHODS)
-		// ================================================================
+			if (Mention.ENABLED)
+				for (final Player target : Remain.getOnlinePlayers()) {
+					final String targetName = target.getName();
+					final int thisIndex = message.indexOf(targetName);
 
-		if (!HookManager.isLogged(player)) {
-			Common.tell(player, Message.NOT_LOGGED);
+					if (thisIndex != -1) {
+						CompChatColor messageColor = Chat.MESSAGE_COLOR;
 
-			return;
-		}
+						if (HookManager.isVaultLoaded())
+							for (final GroupData group : Chat.GROUP_FORMAT)
+								if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
+									messageColor = group.getMessageColor();
 
-		if (this.isMuted(player)) {
-			Common.tell(player, Message.MUTED);
+						final String mentionColor = Mention.COLOR;
 
-			return;
-		}
+						if (mentionColor.startsWith("&") || mentionColor.startsWith("#") || mentionColor.startsWith("{#"))
+							message = message.replace(targetName, Mention.COLOR + targetName + (messageColor != null ? messageColor : "&f"));
+						else
+							Common.log("Mention Color in the settings.yml must start with a color. (&, #, {#)");
 
-		if (!Util.hasPermission(player, Chat.PERMISSION)) {
-			Common.tell(player, Message.NO_PERMISSION.replace("{0}", Chat.PERMISSION));
-
-			return;
-		}
-
-		// ================================================================
-		// /CHECKERS (RETURN METHODS)
-		// ================================================================
-
-		if (Chat.Question.ENABLED) {
-			final QuestionData question = QuestionTask.getQuestion();
-
-			if (QuestionTask.questionIsRunning() && message.toLowerCase().contains(question.getAnswer().toLowerCase())) {
-				final String replacedMessage = Replacer.replaceArray(Settings.Message.Question.GUESSED,
-						"0", player.getName(),
-						"1", question.getAnswer()
-				);
-
-				Common.runLater(2, () -> {
-					Common.broadcast(replacedMessage);
-
-					PlayerData.findPlayer(player).increaseReactedTimes();
-
-					for (final String reward : Question.REWARDS)
-						Common.dispatchCommand(player, reward);
-
-					final CompSound sound = question.getSound() != null ? question.getSound() : null;
-
-					if (sound != null)
-						sound.play(player);
-				});
-
-				QuestionTask.stopQuestion();
-
-				return;
-			}
-		}
-
-		if (Mention.ENABLED)
-			for (final Player target : Remain.getOnlinePlayers()) {
-				final String targetName = target.getName();
-				final int thisIndex = message.indexOf(targetName);
-
-				if (thisIndex != -1) {
-					CompChatColor messageColor = Chat.MESSAGE_COLOR;
-
-					if (HookManager.isVaultLoaded())
-						for (final GroupData group : Chat.GROUP_FORMAT)
-							if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
-								messageColor = group.getMessageColor();
-
-					final String mentionColor = Mention.COLOR;
-
-					if (mentionColor.startsWith("&") || mentionColor.startsWith("#") || mentionColor.startsWith("{#"))
-						message = message.replace(targetName, Mention.COLOR + targetName + (messageColor != null ? messageColor : "&f"));
-					else
-						Common.log("Mention Color in the settings.yml must start with a color. (&, #, {#)");
-
-					Util.sendType(target, Mention.MESSAGE.replace("{target_name}", player.getName()), false);
-					Mention.SOUND.play(target);
+						Util.sendType(target, Mention.MESSAGE.replace("{target_name}", player.getName()), false);
+						Mention.SOUND.play(target);
+					}
 				}
-			}
 
-		if (Emoji.ENABLED)
-			for (final EmojiData emoji : Emoji.EMOJIS) {
-				final String emojiToReplace = emoji.getWhatToReplace();
-				final int thisIndex = message.indexOf(emojiToReplace);
+			if (Emoji.ENABLED)
+				for (final EmojiData emoji : Emoji.EMOJIS) {
+					final String emojiToReplace = emoji.getWhatToReplace();
+					final int thisIndex = message.indexOf(emojiToReplace);
 
-				if (thisIndex != -1) {
-					CompChatColor messageColor = Chat.MESSAGE_COLOR;
+					if (thisIndex != -1) {
+						CompChatColor messageColor = Chat.MESSAGE_COLOR;
 
-					if (HookManager.isVaultLoaded())
-						for (final GroupData group : Chat.GROUP_FORMAT)
-							if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
-								messageColor = group.getMessageColor();
+						if (HookManager.isVaultLoaded())
+							for (final GroupData group : Chat.GROUP_FORMAT)
+								if (HookManager.getPlayerPermissionGroup(player).equals(group.getName()))
+									messageColor = group.getMessageColor();
 
-					message = message.replace(emojiToReplace, Emoji.COLOR + emoji.getReplaceTo() + (messageColor != null ? messageColor : "&f"));
+						message = message.replace(emojiToReplace, Emoji.COLOR + emoji.getReplaceTo() + (messageColor != null ? messageColor : "&f"));
+					}
 				}
-			}
 
-		this.chat(player, message);
+			this.chat(player, message);
+		}
 	}
 
 	private void chat(final Player player, final String message) {
@@ -202,7 +173,7 @@ public final class ChatListener implements Listener {
 		final SimpleComponent chatComponent = SimpleComponent.of(message);
 
 		List<String> hoverMessages = Chat.HOVER;
-		hoverMessages = this.replaceVariables(player, hoverMessages);
+		hoverMessages = Util.replaceVariables(player, hoverMessages);
 
 		chatComponent.onHover(hoverMessages);
 		chatComponent.onClickSuggestCmd(HOVER_CLICK_COMMAND.replace("{0}", player.getName()));
@@ -225,22 +196,6 @@ public final class ChatListener implements Listener {
 
 			channel.sendMessage(formattedMessage).queue();
 		}
-	}
-
-	private boolean isMuted(final Player player) {
-		if (Common.doesPluginExist("AdvancedBan") && PunishmentManager.get().isMuted(UUIDManager.get().getUUID(player.getName())))
-			return true;
-
-		return HookManager.isMuted(player);
-	}
-
-	private List<String> replaceVariables(final Player player, final List<String> list) {
-		final List<String> replaced = new ArrayList<>();
-
-		for (final String item : list)
-			replaced.add(Variables.replace(item, player));
-
-		return replaced;
 	}
 
 }

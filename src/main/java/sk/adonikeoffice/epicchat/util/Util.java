@@ -4,13 +4,19 @@ package sk.adonikeoffice.epicchat.util;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import me.leoko.advancedban.manager.PunishmentManager;
+import me.leoko.advancedban.manager.UUIDManager;
 import org.bukkit.entity.Player;
 import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.Common;
+import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.model.Variables;
 import org.mineacademy.fo.remain.Remain;
 import sk.adonikeoffice.epicchat.settings.Settings;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Util {
 
@@ -68,6 +74,18 @@ public final class Util {
 			Common.log("Unknown message type. Available: " + actionBarType + ", " + chatType + ", " + titleType);
 	}
 
+	@RequiredArgsConstructor
+	private enum MessageType {
+		ACTIONBAR("{actionbar}"), CHAT("{chat}"), TITLE("{title}");
+
+		@Getter
+		private final String type;
+	}
+
+	// ================================================================
+	// METHODS RELATED TO PLAYERS
+	// ================================================================
+
 	public static boolean hasPermission(final Player player, final String permission) {
 		if (permission.equals("none"))
 			return true;
@@ -75,12 +93,46 @@ public final class Util {
 		return player.hasPermission(permission) || player.isOp();
 	}
 
-	@RequiredArgsConstructor
-	private enum MessageType {
-		ACTIONBAR("{actionbar}"), CHAT("{chat}"), TITLE("{title}");
+	public static boolean canChat(final Player player) {
+		if (isMuted(player)) {
+			Common.tell(player, Settings.Message.MUTED);
 
-		@Getter
-		private final String type;
+			return false;
+		}
+
+		if (!HookManager.isLogged(player)) {
+			Common.tell(player, Settings.Message.NOT_LOGGED);
+
+			return false;
+		}
+
+		if (!Util.hasPermission(player, Settings.Chat.PERMISSION)) {
+			Common.tell(player, Settings.Message.NO_PERMISSION.replace("{0}", Settings.Chat.PERMISSION));
+
+			return false;
+		}
+
+		return true;
+	}
+
+	private static boolean isMuted(final Player player) {
+		if (Common.doesPluginExist("AdvancedBan") && PunishmentManager.get().isMuted(UUIDManager.get().getUUID(player.getName())))
+			return true;
+
+		return HookManager.isMuted(player);
+	}
+
+	// ================================================================
+	// /METHODS RELATED TO PLAYERS
+	// ================================================================
+
+	public static List<String> replaceVariables(final Player player, final List<String> list) {
+		final List<String> replaced = new ArrayList<>();
+
+		for (final String item : list)
+			replaced.add(Variables.replace(item, player));
+
+		return replaced;
 	}
 
 }
