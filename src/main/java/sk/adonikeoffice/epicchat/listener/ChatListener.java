@@ -165,9 +165,7 @@ public final class ChatListener implements Listener {
 		final String formattedMessage = Replacer.replaceArray(format, "message", hasColorPermission ? messageColor + message : messageColor + Common.stripColors(message));
 
 		this.sendMessage(player, formattedMessage);
-
-		if (Discord.isEnabled())
-			this.sendDiscordMessage(player, message);
+		this.sendDiscordMessage(player, message);
 	}
 
 	private void sendMessage(final Player player, final String message) {
@@ -187,15 +185,19 @@ public final class ChatListener implements Listener {
 	}
 
 	private void sendDiscordMessage(final Player player, final String message) {
-		final JDA jda = EpicChatPlugin.getJda();
-		final TextChannel channel = jda.getTextChannelById(Discord.CHAT_CHANNEL_ID);
+		//HookManager.sendDiscordMessage(DiscordSRV.getPlugin().getMainTextChannel().getId(), DiscordSRV.getPlugin().getMessageFromConfiguration("").getContent());
 
-		if (channel != null) {
-			final String formattedMessage = Replacer.replaceArray(Variables.replace(Discord.DISCORD_FORMAT, player),
-					"message", Common.stripColors(message)
-			);
+		if (Discord.isEnabled()) {
+			final JDA jda = EpicChatPlugin.getJda();
+			final TextChannel channel = jda.getTextChannelById(Discord.CHAT_CHANNEL_ID);
 
-			channel.sendMessage(formattedMessage).queue();
+			if (channel != null) {
+				final String formattedMessage = Replacer.replaceArray(Variables.replace(Discord.DISCORD_FORMAT, player),
+						"message", Common.stripColors(message)
+				);
+
+				channel.sendMessage(formattedMessage).queue();
+			}
 		}
 	}
 

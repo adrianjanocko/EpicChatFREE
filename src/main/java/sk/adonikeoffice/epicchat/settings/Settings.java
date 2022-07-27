@@ -20,6 +20,7 @@ public final class Settings extends SimpleSettings {
 	}
 
 	public static class Chat {
+
 		public static Boolean ENABLED;
 		public static List<String> ALIASES;
 		public static String PERMISSION;
@@ -134,6 +135,21 @@ public final class Settings extends SimpleSettings {
 
 			public static boolean isEnabled() {
 				return ENABLED && Chat.ENABLED;
+			}
+
+			public static class Activity {
+
+				public static net.dv8tion.jda.api.entities.Activity.ActivityType TYPE;
+				public static String MESSAGE;
+				public static SimpleTime REPEAT_EVERY;
+
+				private static void init() {
+					setPathPrefix("Chat.Discord.Test");
+					TYPE = get("Type", net.dv8tion.jda.api.entities.Activity.ActivityType.class);
+					MESSAGE = getString("Message");
+					REPEAT_EVERY = getTime("Repeat_Every");
+				}
+
 			}
 
 		}

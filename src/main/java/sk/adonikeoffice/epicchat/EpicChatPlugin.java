@@ -3,7 +3,6 @@ package sk.adonikeoffice.epicchat;
 import lombok.Getter;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Activity;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.MinecraftVersion;
@@ -13,6 +12,7 @@ import sk.adonikeoffice.epicchat.command.ReloadCommand;
 import sk.adonikeoffice.epicchat.data.PlayerData;
 import sk.adonikeoffice.epicchat.listener.ChatListener;
 import sk.adonikeoffice.epicchat.listener.DiscordListener;
+import sk.adonikeoffice.epicchat.task.ActivityTask;
 import sk.adonikeoffice.epicchat.task.AnnouncementTask;
 import sk.adonikeoffice.epicchat.task.QuestionTask;
 
@@ -22,6 +22,11 @@ import static sk.adonikeoffice.epicchat.settings.Settings.Chat;
 import static sk.adonikeoffice.epicchat.settings.Settings.Chat.Discord;
 
 public class EpicChatPlugin extends SimplePlugin {
+
+	//
+	// TODO: 1.
+	// Test added Activity_Type and Activity_Message,
+	//
 
 	@Getter
 	public static JDA jda;
@@ -52,7 +57,6 @@ public class EpicChatPlugin extends SimplePlugin {
 
 				try {
 					jda = JDABuilder.createDefault(token)
-							.setActivity(Activity.playing("Minecraft"))
 							.addEventListeners(new DiscordListener())
 							.build();
 				} catch (final LoginException e) {
@@ -104,6 +108,9 @@ public class EpicChatPlugin extends SimplePlugin {
 
 		if (Chat.Announcement.ENABLED)
 			Common.runTimerAsync(20, new AnnouncementTask());
+
+		if (Discord.isEnabled())
+			Common.runTimerAsync(20, new ActivityTask());
 	}
 
 	@Override
