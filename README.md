@@ -1,3 +1,5 @@
+MINECRAFT 1.19: Players may get disconnected when chatting, this is an issue on MC's side due to the new chat reporting system implemented by Microsoft. Real quick exists, together with Epic Chat, add this plugin too: https://github.com/V1nc3ntWasTaken/NoEncryption/releases. We can't do anything else except of waiting and hope, that they will fix it as soon as possible.
+
 <img src="https://bstats.org/signatures/bukkit/EpicChatPlugin.svg"><img/>
 ![1](https://user-images.githubusercontent.com/65062119/178519330-e296ee67-5e0d-4432-badd-4c573dd329c8.png)
 
