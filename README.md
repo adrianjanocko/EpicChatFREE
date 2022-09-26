@@ -1,5 +1,5 @@
 <a href="https://builtbybit.com/resources/epicchatpro-chat-management-solution.25086/">
-    <img src="https://i.imgur.com/kpg0UH3.png" alt="Comparison of EpicChatPRO vs EpicChatFREE">
+    <img src="https://user-images.githubusercontent.com/65062119/192221088-d5e83c90-4476-4da2-8c64-2c60a87582a0.png" alt="Comparison of EpicChatPRO vs EpicChatFREE">
 </a>
 
 MINECRAFT 1.19: Players may get disconnected when chatting, this is an issue on MC's side due to the new chat reporting
