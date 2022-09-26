@@ -12,62 +12,64 @@ import java.util.List;
 
 public final class ReloadCommand extends SimpleCommand {
 
-	public ReloadCommand() {
-		super("epicchat");
+    public ReloadCommand() {
+        super("epicchat");
 
-		this.setAliases(Settings.Chat.ALIASES);
-		this.setPermission(null);
-		this.setAutoHandleHelp(false);
-	}
+        this.setAliases(Settings.Chat.ALIASES);
+        this.setPermission(null);
+        this.setAutoHandleHelp(false);
+    }
 
-	@Override
-	protected void onCommand() {
-		if (!this.isPlayer())
-			this.returnTell(Settings.Message.NO_CONSOLE);
+    @Override
+    protected void onCommand() {
+        if (!this.isPlayer())
+            this.returnTell(Settings.Message.NO_CONSOLE);
 
-		final Player player = getPlayer();
-		final boolean hasAccess = Util.hasPermission(player, Settings.Command.Reload.PERMISSION);
+        final Player player = getPlayer();
+        final boolean hasAccess = Util.hasPermission(player, Settings.Command.Reload.PERMISSION);
 
-		if (this.args.length == 0) {
-			final List<String> helpMessage = new ArrayList<>();
+        if (this.args.length == 0) {
+            final List<String> helpMessage = new ArrayList<>();
 
-			helpMessage.add("&8" + Common.chatLine());
-			helpMessage.add(Settings.PLUGIN_PREFIX + "Running EpicChatᵀᴹ &f" + SimplePlugin.getVersion());
-			helpMessage.add(Settings.PLUGIN_PREFIX + "Made by &fAdoNikeOFFICE &7in &4²⁰²²");
+            helpMessage.add("&8" + Common.chatLine());
+            helpMessage.add(Settings.PLUGIN_PREFIX + "Running EpicChatᵀᴹ &f" + SimplePlugin.getVersion());
+            helpMessage.add(Settings.PLUGIN_PREFIX + "Made by &fAdoNikeOFFICE &7in &4²⁰²²");
+            helpMessage.add(Settings.PLUGIN_PREFIX);
+            helpMessage.add(Settings.PLUGIN_PREFIX + "Premium version of the plugin &fhttps://bit.ly/3BB02WV.");
 
-			if (hasAccess) {
-				helpMessage.add(" ");
-				helpMessage.add(Settings.PLUGIN_PREFIX + "&7Type &4/" + this.getCurrentLabel() + " reload &7to reload this plugin.");
-			}
+            if (hasAccess) {
+                helpMessage.add(" ");
+                helpMessage.add(Settings.PLUGIN_PREFIX + "&7Type &4/" + this.getCurrentLabel() + " reload &7to reload this plugin.");
+            }
 
-			helpMessage.add("&8" + Common.chatLine());
+            helpMessage.add("&8" + Common.chatLine());
 
-			this.returnTell(helpMessage);
-		}
+            this.returnTell(helpMessage);
+        }
 
-		final String param = this.args[0].toLowerCase();
+        final String param = this.args[0].toLowerCase();
 
-		if (hasAccess) {
-			if ("reload".equals(param)) {
-				try {
-					SimplePlugin.getInstance().reload();
+        if (hasAccess) {
+            if ("reload".equals(param)) {
+                try {
+                    SimplePlugin.getInstance().reload();
 
-					this.tell("Plugin has been reloaded.");
-				} catch (final Throwable t) {
-					Common.error(t, "Join Epic Chat discord, create a ticket and report this to the author (AdoNikeOFFICE).");
-				}
-			} else
-				this.tell(Settings.Message.INVALID_ARGS);
-		} else
-			this.tell(Settings.Message.NO_PERMISSION.replace("{0}", Settings.Command.Reload.PERMISSION));
-	}
+                    this.tell("Plugin has been reloaded.");
+                } catch (final Throwable t) {
+                    Common.error(t, "Join Epic Chat discord, create a ticket and report this to the author (AdoNikeOFFICE).");
+                }
+            } else
+                this.tell(Settings.Message.INVALID_ARGS);
+        } else
+            this.tell(Settings.Message.NO_PERMISSION.replace("{0}", Settings.Command.Reload.PERMISSION));
+    }
 
-	@Override
-	protected List<String> tabComplete() {
-		if (this.args.length == 1 && Util.hasPermission(this.getPlayer(), Settings.Command.Reload.PERMISSION))
-			return this.completeLastWord("reload");
+    @Override
+    protected List<String> tabComplete() {
+        if (this.args.length == 1 && Util.hasPermission(this.getPlayer(), Settings.Command.Reload.PERMISSION))
+            return this.completeLastWord("reload");
 
-		return NO_COMPLETE;
-	}
+        return NO_COMPLETE;
+    }
 
 }
