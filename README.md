@@ -1,7 +1,3 @@
-<a href="https://builtbybit.com/resources/epicchatpro-chat-management-solution.25086/">
-    <img src="https://user-images.githubusercontent.com/65062119/200529204-bf265a55-7013-4649-a315-11ee9a8ec62a.png" alt="Comparison of EpicChatPRO vs EpicChatFREE">
-</a>
-
 ## License
 
 ```
